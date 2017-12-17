@@ -32,7 +32,7 @@ public class EcUserController {
         EcUser ecUser  = ecUserService.findEcUserByLogin(id, password);
         if (ecUser != null) {
             //resultMap.put("wxid", ecUser);
-            resultMap.put("res", "yes");
+            resultMap.put("res", "yes11");
         } else {
             resultMap.put("res", "no");
         }
