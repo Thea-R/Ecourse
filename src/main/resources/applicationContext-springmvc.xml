@@ -10,15 +10,12 @@
     http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <mvc:annotation-driven/>
     <!-- 扫描web层 -->
     <context:component-scan base-package="com.ecourse.controller"/>
 
     <!-- 配置静态资源不经过dispatcher处理 -->
     <mvc:default-servlet-handler/>
-
-    <!-- 开启SpringMVC注解模式，配置fastjson替换jackjson -->
-    <mvc:annotation-driven/>
-
 
     <!-- 解析的结果: 前缀+ viewName +后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

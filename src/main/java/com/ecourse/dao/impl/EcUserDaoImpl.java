@@ -2,7 +2,6 @@ package com.ecourse.dao.impl;
 
 import com.ecourse.dao.EcUserDao;
 import com.ecourse.entity.EcUser;
-import com.ecourse.entity.EcUser;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,13 +13,13 @@ import java.util.List;
  */
 @Repository
 public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
-    
+
     public void saveEcUser(EcUser ecUser) {
         getSession().save(ecUser);
     }
 
     public EcUser findEcUserById(Integer id) {
-        String hql = "from EcUser where userId=?";
+        String hql = "from EcUser where userId = ? ";
         Query query = getSession().createQuery(hql);
         query.setParameter(0, id);
         return (EcUser) query.uniqueResult();

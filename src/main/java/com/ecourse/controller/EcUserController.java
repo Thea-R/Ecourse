@@ -23,16 +23,15 @@ public class EcUserController {
     @Autowired
     private EcUserService ecUserService;
 
-    
+    @ResponseBody
     @RequestMapping("/login")
-    public @ResponseBody Map<String, Object> ecUserLogin(ModelMap map, HttpServletRequest request) throws Exception {
+    public Map<String, Object> ecUserLogin(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         String password = request.getParameter("password");
-        int id = Integer.getInteger(request.getParameter("ecUserId"));
+        int id = Integer.parseInt(request.getParameter("ecUserId"));
         EcUser ecUser  = ecUserService.findEcUserByLogin(id, password);
-        System.out.println("ecUser的值是：---"+ password + "，当前方法=EcUserController.ecUserLogin()");
         if (ecUser != null) {
-            resultMap.put("wxid", ecUser.getUserWxId());
+            //resultMap.put("wxid", ecUser);
             resultMap.put("res", "yes");
         } else {
             resultMap.put("res", "no");
