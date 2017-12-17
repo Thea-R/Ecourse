@@ -31,7 +31,7 @@ public class EcUserController {
         int id = Integer.parseInt(request.getParameter("ecUserId"));
         EcUser ecUser  = ecUserService.findEcUserByLogin(id, password);
         if (ecUser != null) {
-            //resultMap.put("wxid", ecUser);
+            resultMap.put("wxid", ecUser);
             resultMap.put("res", "yes");
         } else {
             resultMap.put("res", "no");
