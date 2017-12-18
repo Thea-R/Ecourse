@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 public class EcStuandcoursePK implements Serializable {
     private int courseId;

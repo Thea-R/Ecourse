@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_stcheck", schema = "ecourse")
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class EcStcheck {
     private int checkId;
     private int userId;
-    private int checkType;
+    private Integer checkType;
 
     @Id
     @Column(name = "Check_Id", nullable = false)
@@ -36,11 +36,11 @@ public class EcStcheck {
 
     @Basic
     @Column(name = "Check_type", nullable = true)
-    public int getCheckType() {
+    public Integer getCheckType() {
         return checkType;
     }
 
-    public void setCheckType(int checkType) {
+    public void setCheckType(Integer checkType) {
         this.checkType = checkType;
     }
 
@@ -53,7 +53,7 @@ public class EcStcheck {
 
         if (checkId != ecStcheck.checkId) return false;
         if (userId != ecStcheck.userId) return false;
-        if (checkType != ecStcheck.checkType) return false;
+        if (checkType != null ? !checkType.equals(ecStcheck.checkType) : ecStcheck.checkType != null) return false;
 
         return true;
     }
@@ -62,7 +62,7 @@ public class EcStcheck {
     public int hashCode() {
         int result = checkId;
         result = 31 * result + userId;
-        result = 31 * result + checkType;
+        result = 31 * result + (checkType != null ? checkType.hashCode() : 0);
         return result;
     }
 }

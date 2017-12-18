@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:31
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_check", schema = "ecourse")
@@ -13,6 +13,7 @@ public class EcCheck {
     private int checkId;
     private Date checkTime;
     private Integer courseId;
+    private String checkVerify;
 
     @Id
     @Column(name = "Check_Id", nullable = false)
@@ -44,6 +45,16 @@ public class EcCheck {
         this.courseId = courseId;
     }
 
+    @Basic
+    @Column(name = "Check_Verify", nullable = true, length = 20)
+    public String getCheckVerify() {
+        return checkVerify;
+    }
+
+    public void setCheckVerify(String checkVerify) {
+        this.checkVerify = checkVerify;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,6 +65,7 @@ public class EcCheck {
         if (checkId != ecCheck.checkId) return false;
         if (checkTime != null ? !checkTime.equals(ecCheck.checkTime) : ecCheck.checkTime != null) return false;
         if (courseId != null ? !courseId.equals(ecCheck.courseId) : ecCheck.courseId != null) return false;
+        if (checkVerify != null ? !checkVerify.equals(ecCheck.checkVerify) : ecCheck.checkVerify != null) return false;
 
         return true;
     }
@@ -63,6 +75,7 @@ public class EcCheck {
         int result = checkId;
         result = 31 * result + (checkTime != null ? checkTime.hashCode() : 0);
         result = 31 * result + (courseId != null ? courseId.hashCode() : 0);
+        result = 31 * result + (checkVerify != null ? checkVerify.hashCode() : 0);
         return result;
     }
 }

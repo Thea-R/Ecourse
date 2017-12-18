@@ -5,14 +5,14 @@ import java.util.Date;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_notice", schema = "ecourse")
 public class EcNotice {
     private int notId;
     private int courseId;
-    private int notType;
+    private Integer notType;
     private Date notTime;
     private String notContent;
     private String notTitle;
@@ -39,11 +39,11 @@ public class EcNotice {
 
     @Basic
     @Column(name = "Not_Type", nullable = true)
-    public int getNotType() {
+    public Integer getNotType() {
         return notType;
     }
 
-    public void setNotType(int notType) {
+    public void setNotType(Integer notType) {
         this.notType = notType;
     }
 
@@ -80,23 +80,25 @@ public class EcNotice {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EcNotice)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         EcNotice ecNotice = (EcNotice) o;
 
         if (notId != ecNotice.notId) return false;
         if (courseId != ecNotice.courseId) return false;
-        if (notType != ecNotice.notType) return false;
+        if (notType != null ? !notType.equals(ecNotice.notType) : ecNotice.notType != null) return false;
         if (notTime != null ? !notTime.equals(ecNotice.notTime) : ecNotice.notTime != null) return false;
         if (notContent != null ? !notContent.equals(ecNotice.notContent) : ecNotice.notContent != null) return false;
-        return notTitle != null ? notTitle.equals(ecNotice.notTitle) : ecNotice.notTitle == null;
+        if (notTitle != null ? !notTitle.equals(ecNotice.notTitle) : ecNotice.notTitle != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = notId;
         result = 31 * result + courseId;
-        result = 31 * result + notType;
+        result = 31 * result + (notType != null ? notType.hashCode() : 0);
         result = 31 * result + (notTime != null ? notTime.hashCode() : 0);
         result = 31 * result + (notContent != null ? notContent.hashCode() : 0);
         result = 31 * result + (notTitle != null ? notTitle.hashCode() : 0);

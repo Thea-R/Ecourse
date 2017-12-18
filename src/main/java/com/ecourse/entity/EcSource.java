@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_source", schema = "ecourse")
@@ -15,7 +15,7 @@ public class EcSource {
     private String sourceLink;
     private String sourcePassword;
     private String sourceUnit;
-    private int sourceType;
+    private Integer sourceType;
     private String sourceNote;
     private Integer sourceShare;
 
@@ -81,11 +81,11 @@ public class EcSource {
 
     @Basic
     @Column(name = "Source_Type", nullable = true)
-    public int getSourceType() {
+    public Integer getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(int sourceType) {
+    public void setSourceType(Integer sourceType) {
         this.sourceType = sourceType;
     }
 
@@ -117,7 +117,6 @@ public class EcSource {
         EcSource ecSource = (EcSource) o;
 
         if (sourceId != ecSource.sourceId) return false;
-        if (sourceType != ecSource.sourceType) return false;
         if (courseId != null ? !courseId.equals(ecSource.courseId) : ecSource.courseId != null) return false;
         if (sourceTitle != null ? !sourceTitle.equals(ecSource.sourceTitle) : ecSource.sourceTitle != null)
             return false;
@@ -125,6 +124,7 @@ public class EcSource {
         if (sourcePassword != null ? !sourcePassword.equals(ecSource.sourcePassword) : ecSource.sourcePassword != null)
             return false;
         if (sourceUnit != null ? !sourceUnit.equals(ecSource.sourceUnit) : ecSource.sourceUnit != null) return false;
+        if (sourceType != null ? !sourceType.equals(ecSource.sourceType) : ecSource.sourceType != null) return false;
         if (sourceNote != null ? !sourceNote.equals(ecSource.sourceNote) : ecSource.sourceNote != null) return false;
         if (sourceShare != null ? !sourceShare.equals(ecSource.sourceShare) : ecSource.sourceShare != null)
             return false;
@@ -140,7 +140,7 @@ public class EcSource {
         result = 31 * result + (sourceLink != null ? sourceLink.hashCode() : 0);
         result = 31 * result + (sourcePassword != null ? sourcePassword.hashCode() : 0);
         result = 31 * result + (sourceUnit != null ? sourceUnit.hashCode() : 0);
-        result = 31 * result + sourceType;
+        result = 31 * result + (sourceType != null ? sourceType.hashCode() : 0);
         result = 31 * result + (sourceNote != null ? sourceNote.hashCode() : 0);
         result = 31 * result + (sourceShare != null ? sourceShare.hashCode() : 0);
         return result;

@@ -1,10 +1,11 @@
 package com.ecourse.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_notice_view", schema = "ecourse")
@@ -12,6 +13,7 @@ import javax.persistence.*;
 public class EcNoticeView {
     private int notId;
     private int userId;
+    private Date notViewTime;
 
     @Id
     @Column(name = "Not_Id", nullable = false)
@@ -33,6 +35,16 @@ public class EcNoticeView {
         this.userId = userId;
     }
 
+    @Basic
+    @Column(name = "Not_ViewTime", nullable = true)
+    public Date getNotViewTime() {
+        return notViewTime;
+    }
+
+    public void setNotViewTime(Date notViewTime) {
+        this.notViewTime = notViewTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,6 +54,7 @@ public class EcNoticeView {
 
         if (notId != that.notId) return false;
         if (userId != that.userId) return false;
+        if (notViewTime != null ? !notViewTime.equals(that.notViewTime) : that.notViewTime != null) return false;
 
         return true;
     }
@@ -50,6 +63,7 @@ public class EcNoticeView {
     public int hashCode() {
         int result = notId;
         result = 31 * result + userId;
+        result = 31 * result + (notViewTime != null ? notViewTime.hashCode() : 0);
         return result;
     }
 }

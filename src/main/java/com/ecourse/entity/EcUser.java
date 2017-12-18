@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:32
+ * @create 2017-12-18 下午4:59
  */
 @Entity
 @Table(name = "ec_user", schema = "ecourse")
@@ -15,13 +15,14 @@ public class EcUser {
     private String userWxId;
     private String userName;
     private String userNum;
-    private int userSex;
+    private Integer userSex;
     private String userSchool;
     private String userSdept;
     private Date userBirth;
     private String userPhone;
-    private int userType;
+    private Integer userType;
     private Date userCreatTime;
+    private String userEmail;
 
     @Id
     @Column(name = "User_Id", nullable = false)
@@ -75,11 +76,11 @@ public class EcUser {
 
     @Basic
     @Column(name = "User_Sex", nullable = true)
-    public int getUserSex() {
+    public Integer getUserSex() {
         return userSex;
     }
 
-    public void setUserSex(int userSex) {
+    public void setUserSex(Integer userSex) {
         this.userSex = userSex;
     }
 
@@ -125,11 +126,11 @@ public class EcUser {
 
     @Basic
     @Column(name = "User_Type", nullable = true)
-    public int getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(int userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 
@@ -143,6 +144,16 @@ public class EcUser {
         this.userCreatTime = userCreatTime;
     }
 
+    @Basic
+    @Column(name = "User_Email", nullable = true, length = 50)
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -151,19 +162,20 @@ public class EcUser {
         EcUser ecUser = (EcUser) o;
 
         if (userId != ecUser.userId) return false;
-        if (userSex != ecUser.userSex) return false;
-        if (userType != ecUser.userType) return false;
         if (userPassword != null ? !userPassword.equals(ecUser.userPassword) : ecUser.userPassword != null)
             return false;
         if (userWxId != null ? !userWxId.equals(ecUser.userWxId) : ecUser.userWxId != null) return false;
         if (userName != null ? !userName.equals(ecUser.userName) : ecUser.userName != null) return false;
         if (userNum != null ? !userNum.equals(ecUser.userNum) : ecUser.userNum != null) return false;
+        if (userSex != null ? !userSex.equals(ecUser.userSex) : ecUser.userSex != null) return false;
         if (userSchool != null ? !userSchool.equals(ecUser.userSchool) : ecUser.userSchool != null) return false;
         if (userSdept != null ? !userSdept.equals(ecUser.userSdept) : ecUser.userSdept != null) return false;
         if (userBirth != null ? !userBirth.equals(ecUser.userBirth) : ecUser.userBirth != null) return false;
         if (userPhone != null ? !userPhone.equals(ecUser.userPhone) : ecUser.userPhone != null) return false;
+        if (userType != null ? !userType.equals(ecUser.userType) : ecUser.userType != null) return false;
         if (userCreatTime != null ? !userCreatTime.equals(ecUser.userCreatTime) : ecUser.userCreatTime != null)
             return false;
+        if (userEmail != null ? !userEmail.equals(ecUser.userEmail) : ecUser.userEmail != null) return false;
 
         return true;
     }
@@ -175,13 +187,14 @@ public class EcUser {
         result = 31 * result + (userWxId != null ? userWxId.hashCode() : 0);
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
         result = 31 * result + (userNum != null ? userNum.hashCode() : 0);
-        result = 31 * result + userSex;
+        result = 31 * result + (userSex != null ? userSex.hashCode() : 0);
         result = 31 * result + (userSchool != null ? userSchool.hashCode() : 0);
         result = 31 * result + (userSdept != null ? userSdept.hashCode() : 0);
         result = 31 * result + (userBirth != null ? userBirth.hashCode() : 0);
         result = 31 * result + (userPhone != null ? userPhone.hashCode() : 0);
-        result = 31 * result + userType;
+        result = 31 * result + (userType != null ? userType.hashCode() : 0);
         result = 31 * result + (userCreatTime != null ? userCreatTime.hashCode() : 0);
+        result = 31 * result + (userEmail != null ? userEmail.hashCode() : 0);
         return result;
     }
 }

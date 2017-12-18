@@ -21,7 +21,6 @@
         <mapping class="com.ecourse.entity.EcSource"/>
         <mapping class="com.ecourse.entity.EcStcheck"/>
         <mapping class="com.ecourse.entity.EcStuandcourse"/>
-        <mapping class="com.ecourse.entity.EcTest"/>
         <mapping class="com.ecourse.entity.EcUnderstand"/>
         <mapping class="com.ecourse.entity.EcUnderstandSelect"/>
         <mapping class="com.ecourse.entity.EcUser"/>

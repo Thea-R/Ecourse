@@ -4,16 +4,15 @@ import javax.persistence.*;
 
 /**
  * @author tomato
- * @create 2017-12-13 下午11:31
+ * @create 2017-12-18 下午4:59
  */
 @Entity
-@Table(name = "ec_answer", schema = "ecourse", catalog = "")
+@Table(name = "ec_answer", schema = "ecourse")
 public class EcAnswer {
     private int ansId;
     private Integer userId;
-    private Integer testId;
     private Integer queId;
-    private int ansAnswer;
+    private Integer ansAnswer;
 
     @Id
     @Column(name = "Ans_Id", nullable = false)
@@ -36,16 +35,6 @@ public class EcAnswer {
     }
 
     @Basic
-    @Column(name = "Test_Id", nullable = true)
-    public Integer getTestId() {
-        return testId;
-    }
-
-    public void setTestId(Integer testId) {
-        this.testId = testId;
-    }
-
-    @Basic
     @Column(name = "Que_Id", nullable = true)
     public Integer getQueId() {
         return queId;
@@ -57,11 +46,11 @@ public class EcAnswer {
 
     @Basic
     @Column(name = "Ans_Answer", nullable = true)
-    public int getAnsAnswer() {
+    public Integer getAnsAnswer() {
         return ansAnswer;
     }
 
-    public void setAnsAnswer(int ansAnswer) {
+    public void setAnsAnswer(Integer ansAnswer) {
         this.ansAnswer = ansAnswer;
     }
 
@@ -73,10 +62,9 @@ public class EcAnswer {
         EcAnswer ecAnswer = (EcAnswer) o;
 
         if (ansId != ecAnswer.ansId) return false;
-        if (ansAnswer != ecAnswer.ansAnswer) return false;
         if (userId != null ? !userId.equals(ecAnswer.userId) : ecAnswer.userId != null) return false;
-        if (testId != null ? !testId.equals(ecAnswer.testId) : ecAnswer.testId != null) return false;
         if (queId != null ? !queId.equals(ecAnswer.queId) : ecAnswer.queId != null) return false;
+        if (ansAnswer != null ? !ansAnswer.equals(ecAnswer.ansAnswer) : ecAnswer.ansAnswer != null) return false;
 
         return true;
     }
@@ -85,9 +73,8 @@ public class EcAnswer {
     public int hashCode() {
         int result = ansId;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (testId != null ? testId.hashCode() : 0);
         result = 31 * result + (queId != null ? queId.hashCode() : 0);
-        result = 31 * result + ansAnswer;
+        result = 31 * result + (ansAnswer != null ? ansAnswer.hashCode() : 0);
         return result;
     }
 }
