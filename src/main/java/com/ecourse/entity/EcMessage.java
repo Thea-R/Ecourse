@@ -79,17 +79,33 @@ public class EcMessage {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcMessage ecMessage = (EcMessage) o;
 
-        if (msgId != ecMessage.msgId) return false;
-        if (userId != ecMessage.userId) return false;
-        if (courseId != ecMessage.courseId) return false;
-        if (msgAnonymous != ecMessage.msgAnonymous) return false;
-        if (msgTime != null ? !msgTime.equals(ecMessage.msgTime) : ecMessage.msgTime != null) return false;
-        if (msgContent != null ? !msgContent.equals(ecMessage.msgContent) : ecMessage.msgContent != null) return false;
+        if (msgId != ecMessage.msgId) {
+            return false;
+        }
+        if (userId != ecMessage.userId) {
+            return false;
+        }
+        if (courseId != ecMessage.courseId) {
+            return false;
+        }
+        if (msgAnonymous != ecMessage.msgAnonymous) {
+            return false;
+        }
+        if (msgTime != null ? !msgTime.equals(ecMessage.msgTime) : ecMessage.msgTime != null) {
+            return false;
+        }
+        if (msgContent != null ? !msgContent.equals(ecMessage.msgContent) : ecMessage.msgContent != null) {
+            return false;
+        }
 
         return true;
     }

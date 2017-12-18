@@ -34,13 +34,21 @@ public class EcNoticeViewPK implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcNoticeViewPK that = (EcNoticeViewPK) o;
 
-        if (notId != that.notId) return false;
-        if (userId != that.userId) return false;
+        if (notId != that.notId) {
+            return false;
+        }
+        if (userId != that.userId) {
+            return false;
+        }
 
         return true;
     }

@@ -57,15 +57,27 @@ public class EcCheck {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcCheck ecCheck = (EcCheck) o;
 
-        if (checkId != ecCheck.checkId) return false;
-        if (checkTime != null ? !checkTime.equals(ecCheck.checkTime) : ecCheck.checkTime != null) return false;
-        if (courseId != null ? !courseId.equals(ecCheck.courseId) : ecCheck.courseId != null) return false;
-        if (checkVerify != null ? !checkVerify.equals(ecCheck.checkVerify) : ecCheck.checkVerify != null) return false;
+        if (checkId != ecCheck.checkId) {
+            return false;
+        }
+        if (checkTime != null ? !checkTime.equals(ecCheck.checkTime) : ecCheck.checkTime != null) {
+            return false;
+        }
+        if (courseId != null ? !courseId.equals(ecCheck.courseId) : ecCheck.courseId != null) {
+            return false;
+        }
+        if (checkVerify != null ? !checkVerify.equals(ecCheck.checkVerify) : ecCheck.checkVerify != null) {
+            return false;
+        }
 
         return true;
     }

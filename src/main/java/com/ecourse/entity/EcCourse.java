@@ -67,17 +67,30 @@ public class EcCourse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcCourse ecCourse = (EcCourse) o;
 
-        if (courseId != ecCourse.courseId) return false;
-        if (userId != null ? !userId.equals(ecCourse.userId) : ecCourse.userId != null) return false;
-        if (courseName != null ? !courseName.equals(ecCourse.courseName) : ecCourse.courseName != null) return false;
-        if (courseNote != null ? !courseNote.equals(ecCourse.courseNote) : ecCourse.courseNote != null) return false;
-        if (courseIcode != null ? !courseIcode.equals(ecCourse.courseIcode) : ecCourse.courseIcode != null)
+        if (courseId != ecCourse.courseId) {
             return false;
+        }
+        if (userId != null ? !userId.equals(ecCourse.userId) : ecCourse.userId != null) {
+            return false;
+        }
+        if (courseName != null ? !courseName.equals(ecCourse.courseName) : ecCourse.courseName != null) {
+            return false;
+        }
+        if (courseNote != null ? !courseNote.equals(ecCourse.courseNote) : ecCourse.courseNote != null) {
+            return false;
+        }
+        if (courseIcode != null ? !courseIcode.equals(ecCourse.courseIcode) : ecCourse.courseIcode != null) {
+            return false;
+        }
 
         return true;
     }

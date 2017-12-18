@@ -31,7 +31,7 @@ public class DateUtil {
 		return sdfYear.format(new Date());
 	}
 
-	Timestamp timestamp = new Timestamp(new Date().getTime());
+	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 	/**
 	 * 获取YYYY-MM-DD格式

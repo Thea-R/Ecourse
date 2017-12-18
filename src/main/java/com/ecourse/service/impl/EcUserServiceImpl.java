@@ -20,18 +20,27 @@ public class EcUserServiceImpl implements EcUserService {
     @Autowired
     private EcUserDao ecUserDao;
 
+    @Override
     public void saveEcUser(EcUser ecUser) {
         ecUserDao.saveEcUser(ecUser);
     }
 
+    @Override
     public EcUser findEcUserById(Integer id) {
         return ecUserDao.findEcUserById(id);
     }
 
+    @Override
     public EcUser findEcUserByLogin(Integer id, String password) {
         return ecUserDao.findEcUserByLogin(id, password);
     }
 
+    @Override
+    public EcUser findEcUserByLogin(String key, String password) {
+        return ecUserDao.findEcUserByLogin(key, password);
+    }
+
+    @Override
     public List<EcUser> findEcUser(Map<String, Object> map) {
         StringBuilder hql = new StringBuilder("from EcUser where 1=1 ");
         List<Object> params = new LinkedList<Object>();
@@ -57,10 +66,12 @@ public class EcUserServiceImpl implements EcUserService {
         return ecUserDao.findEcUser(params, hql.toString());
     }
 
+    @Override
     public void updateEcUser(EcUser ecUser) {
         ecUserDao.updateEcUser(ecUser);
     }
 
+    @Override
     public void deletEcUser(EcUser ecUser) {
         ecUserDao.deletEcUser(ecUser);
     }

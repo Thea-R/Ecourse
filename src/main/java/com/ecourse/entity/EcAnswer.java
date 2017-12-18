@@ -56,15 +56,27 @@ public class EcAnswer {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcAnswer ecAnswer = (EcAnswer) o;
 
-        if (ansId != ecAnswer.ansId) return false;
-        if (userId != null ? !userId.equals(ecAnswer.userId) : ecAnswer.userId != null) return false;
-        if (queId != null ? !queId.equals(ecAnswer.queId) : ecAnswer.queId != null) return false;
-        if (ansAnswer != null ? !ansAnswer.equals(ecAnswer.ansAnswer) : ecAnswer.ansAnswer != null) return false;
+        if (ansId != ecAnswer.ansId) {
+            return false;
+        }
+        if (userId != null ? !userId.equals(ecAnswer.userId) : ecAnswer.userId != null) {
+            return false;
+        }
+        if (queId != null ? !queId.equals(ecAnswer.queId) : ecAnswer.queId != null) {
+            return false;
+        }
+        if (ansAnswer != null ? !ansAnswer.equals(ecAnswer.ansAnswer) : ecAnswer.ansAnswer != null) {
+            return false;
+        }
 
         return true;
     }

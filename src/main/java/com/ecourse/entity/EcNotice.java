@@ -79,17 +79,33 @@ public class EcNotice {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcNotice ecNotice = (EcNotice) o;
 
-        if (notId != ecNotice.notId) return false;
-        if (courseId != ecNotice.courseId) return false;
-        if (notType != null ? !notType.equals(ecNotice.notType) : ecNotice.notType != null) return false;
-        if (notTime != null ? !notTime.equals(ecNotice.notTime) : ecNotice.notTime != null) return false;
-        if (notContent != null ? !notContent.equals(ecNotice.notContent) : ecNotice.notContent != null) return false;
-        if (notTitle != null ? !notTitle.equals(ecNotice.notTitle) : ecNotice.notTitle != null) return false;
+        if (notId != ecNotice.notId) {
+            return false;
+        }
+        if (courseId != ecNotice.courseId) {
+            return false;
+        }
+        if (notType != null ? !notType.equals(ecNotice.notType) : ecNotice.notType != null) {
+            return false;
+        }
+        if (notTime != null ? !notTime.equals(ecNotice.notTime) : ecNotice.notTime != null) {
+            return false;
+        }
+        if (notContent != null ? !notContent.equals(ecNotice.notContent) : ecNotice.notContent != null) {
+            return false;
+        }
+        if (notTitle != null ? !notTitle.equals(ecNotice.notTitle) : ecNotice.notTitle != null) {
+            return false;
+        }
 
         return true;
     }

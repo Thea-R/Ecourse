@@ -20,14 +20,17 @@ public class EcAnswerServiceImpl implements EcAnswerService {
     @Autowired
     private EcAnswerDao ecAnswerDao;
 
+    @Override
     public void saveEcAnswer(EcAnswer ecAnswer) {
         ecAnswerDao.saveEcAnswer(ecAnswer);
     }
 
+    @Override
     public EcAnswer findEcAnswerById(Integer id) {
         return ecAnswerDao.findEcAnswerById(id);
     }
 
+    @Override
     public List<EcAnswer> findEcAnswer(Map<String, Object> map) {
         StringBuilder hql = new StringBuilder("from EcAnswer where 1=1 ");
         List<Object> params = new LinkedList<Object>();
@@ -52,10 +55,12 @@ public class EcAnswerServiceImpl implements EcAnswerService {
         return ecAnswerDao.findEcAnswer(params, hql.toString());
     }
 
+    @Override
     public void updateEcAnswer(EcAnswer ecAnswer) {
         ecAnswerDao.updateEcAnswer(ecAnswer);
     }
 
+    @Override
     public void deletEcAnswer(EcAnswer ecAnswer) {
         ecAnswerDao.deletEcAnswer(ecAnswer);
     }

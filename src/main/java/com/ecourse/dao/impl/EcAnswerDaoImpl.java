@@ -19,6 +19,7 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * 保存
      * @param ecAnswer  保存数据
      */
+    @Override
     public void saveEcAnswer(EcAnswer ecAnswer) {
         getSession().save(ecAnswer);
     }
@@ -28,6 +29,7 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * @param id key
      * @return 返回ID对应的对象，没有查找到为null
      */
+    @Override
     public EcAnswer findEcAnswerById(Integer id) {
         String hql = "from EcAnswer where ansId=?";
         Query query = getSession().createQuery(hql);
@@ -41,6 +43,7 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * @param hql 查找的hql语句
      * @return 一堆EcAnswer对象
      */
+    @Override
     @SuppressWarnings("unchecked")
     public List<EcAnswer> findEcAnswer(List<Object> params, String hql) {
         Query query = getSession().createQuery(hql);
@@ -56,6 +59,7 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * 更新EcAnswer
      * @param ecAnswer 需要更新的EcAnswer持久化对象
      */
+    @Override
     public void updateEcAnswer(EcAnswer ecAnswer) {
         getSession().update(ecAnswer);
     }
@@ -64,6 +68,7 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * 删除EcAnswer
      * @param ecAnswer 需要删除的EcAnswer
      */
+    @Override
     public void deletEcAnswer(EcAnswer ecAnswer) {
         getSession().delete(ecAnswer);
     }

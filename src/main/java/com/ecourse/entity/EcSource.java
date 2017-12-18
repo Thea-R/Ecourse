@@ -111,23 +111,42 @@ public class EcSource {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcSource ecSource = (EcSource) o;
 
-        if (sourceId != ecSource.sourceId) return false;
-        if (courseId != null ? !courseId.equals(ecSource.courseId) : ecSource.courseId != null) return false;
-        if (sourceTitle != null ? !sourceTitle.equals(ecSource.sourceTitle) : ecSource.sourceTitle != null)
+        if (sourceId != ecSource.sourceId) {
             return false;
-        if (sourceLink != null ? !sourceLink.equals(ecSource.sourceLink) : ecSource.sourceLink != null) return false;
-        if (sourcePassword != null ? !sourcePassword.equals(ecSource.sourcePassword) : ecSource.sourcePassword != null)
+        }
+        if (courseId != null ? !courseId.equals(ecSource.courseId) : ecSource.courseId != null) {
             return false;
-        if (sourceUnit != null ? !sourceUnit.equals(ecSource.sourceUnit) : ecSource.sourceUnit != null) return false;
-        if (sourceType != null ? !sourceType.equals(ecSource.sourceType) : ecSource.sourceType != null) return false;
-        if (sourceNote != null ? !sourceNote.equals(ecSource.sourceNote) : ecSource.sourceNote != null) return false;
-        if (sourceShare != null ? !sourceShare.equals(ecSource.sourceShare) : ecSource.sourceShare != null)
+        }
+        if (sourceTitle != null ? !sourceTitle.equals(ecSource.sourceTitle) : ecSource.sourceTitle != null) {
             return false;
+        }
+        if (sourceLink != null ? !sourceLink.equals(ecSource.sourceLink) : ecSource.sourceLink != null) {
+            return false;
+        }
+        if (sourcePassword != null ? !sourcePassword.equals(ecSource.sourcePassword) : ecSource.sourcePassword != null) {
+            return false;
+        }
+        if (sourceUnit != null ? !sourceUnit.equals(ecSource.sourceUnit) : ecSource.sourceUnit != null) {
+            return false;
+        }
+        if (sourceType != null ? !sourceType.equals(ecSource.sourceType) : ecSource.sourceType != null) {
+            return false;
+        }
+        if (sourceNote != null ? !sourceNote.equals(ecSource.sourceNote) : ecSource.sourceNote != null) {
+            return false;
+        }
+        if (sourceShare != null ? !sourceShare.equals(ecSource.sourceShare) : ecSource.sourceShare != null) {
+            return false;
+        }
 
         return true;
     }

@@ -156,26 +156,54 @@ public class EcUser {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcUser ecUser = (EcUser) o;
 
-        if (userId != ecUser.userId) return false;
-        if (userPassword != null ? !userPassword.equals(ecUser.userPassword) : ecUser.userPassword != null)
+        if (userId != ecUser.userId) {
             return false;
-        if (userWxId != null ? !userWxId.equals(ecUser.userWxId) : ecUser.userWxId != null) return false;
-        if (userName != null ? !userName.equals(ecUser.userName) : ecUser.userName != null) return false;
-        if (userNum != null ? !userNum.equals(ecUser.userNum) : ecUser.userNum != null) return false;
-        if (userSex != null ? !userSex.equals(ecUser.userSex) : ecUser.userSex != null) return false;
-        if (userSchool != null ? !userSchool.equals(ecUser.userSchool) : ecUser.userSchool != null) return false;
-        if (userSdept != null ? !userSdept.equals(ecUser.userSdept) : ecUser.userSdept != null) return false;
-        if (userBirth != null ? !userBirth.equals(ecUser.userBirth) : ecUser.userBirth != null) return false;
-        if (userPhone != null ? !userPhone.equals(ecUser.userPhone) : ecUser.userPhone != null) return false;
-        if (userType != null ? !userType.equals(ecUser.userType) : ecUser.userType != null) return false;
-        if (userCreatTime != null ? !userCreatTime.equals(ecUser.userCreatTime) : ecUser.userCreatTime != null)
+        }
+        if (userPassword != null ? !userPassword.equals(ecUser.userPassword) : ecUser.userPassword != null) {
             return false;
-        if (userEmail != null ? !userEmail.equals(ecUser.userEmail) : ecUser.userEmail != null) return false;
+        }
+        if (userWxId != null ? !userWxId.equals(ecUser.userWxId) : ecUser.userWxId != null) {
+            return false;
+        }
+        if (userName != null ? !userName.equals(ecUser.userName) : ecUser.userName != null) {
+            return false;
+        }
+        if (userNum != null ? !userNum.equals(ecUser.userNum) : ecUser.userNum != null) {
+            return false;
+        }
+        if (userSex != null ? !userSex.equals(ecUser.userSex) : ecUser.userSex != null) {
+            return false;
+        }
+        if (userSchool != null ? !userSchool.equals(ecUser.userSchool) : ecUser.userSchool != null) {
+            return false;
+        }
+        if (userSdept != null ? !userSdept.equals(ecUser.userSdept) : ecUser.userSdept != null) {
+            return false;
+        }
+        if (userBirth != null ? !userBirth.equals(ecUser.userBirth) : ecUser.userBirth != null) {
+            return false;
+        }
+        if (userPhone != null ? !userPhone.equals(ecUser.userPhone) : ecUser.userPhone != null) {
+            return false;
+        }
+        if (userType != null ? !userType.equals(ecUser.userType) : ecUser.userType != null) {
+            return false;
+        }
+        if (userCreatTime != null ? !userCreatTime.equals(ecUser.userCreatTime) : ecUser.userCreatTime != null) {
+            return false;
+        }
+        if (userEmail != null ? !userEmail.equals(ecUser.userEmail) : ecUser.userEmail != null) {
+            return false;
+        }
 
         return true;
     }

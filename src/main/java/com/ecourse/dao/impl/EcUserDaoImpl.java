@@ -2,6 +2,8 @@ package com.ecourse.dao.impl;
 
 import com.ecourse.dao.EcUserDao;
 import com.ecourse.entity.EcUser;
+import com.ecourse.untils.AccountValidatorUtil;
+import org.apache.ibatis.jdbc.Null;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,10 +16,12 @@ import java.util.List;
 @Repository
 public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
 
+    @Override
     public void saveEcUser(EcUser ecUser) {
         getSession().save(ecUser);
     }
 
+    @Override
     public EcUser findEcUserById(Integer id) {
         String hql = "from EcUser where userId = ? ";
         Query query = getSession().createQuery(hql);
@@ -25,6 +29,7 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
         return (EcUser) query.uniqueResult();
     }
 
+    @Override
     public EcUser findEcUserByLogin(Integer id, String password) {
         String hql = "from EcUser where userId=? and userPassword=?";
         Query query = getSession().createQuery(hql);
@@ -33,6 +38,36 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
         return (EcUser) query.uniqueResult();
     }
 
+    @Override
+    public EcUser findEcUserByLogin(String key, String password) {
+        StringBuilder hql = new StringBuilder("from EcUser where 1=1 ");
+        if (AccountValidatorUtil.isEmail(key)){
+            hql.append(" and userEmail=? ");
+        }
+        else if (AccountValidatorUtil.isMobile(key)){
+            hql.append(" and userPhone=? ");
+        }
+        else {
+            Query query = getSession().createQuery(hql.toString() + " userNum=? and userPassword=?");
+            query.setParameter(0, key);
+            query.setParameter(1, password);
+            EcUser ecUser = (EcUser) query.uniqueResult();
+            if (ecUser == null){
+                query = getSession().createQuery(hql.toString() + " userWxId=? and userPassword=?");
+                query.setParameter(0, key);
+                query.setParameter(1, password);
+                return (EcUser) query.uniqueResult();
+            }
+            return ecUser;
+        }
+        hql.append(" and userPassword=?");
+        Query query = getSession().createQuery(hql.toString());
+        query.setParameter(0, key);
+        query.setParameter(1, password);
+        return (EcUser) query.uniqueResult();
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<EcUser> findEcUser(List<Object> params, String hql) {
         Query query = getSession().createQuery(hql);
@@ -44,10 +79,12 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
         return query.list();
     }
 
+    @Override
     public void updateEcUser(EcUser ecUser) {
         getSession().update(ecUser);
     }
 
+    @Override
     public void deletEcUser(EcUser ecUser) {
         getSession().delete(ecUser);
     }

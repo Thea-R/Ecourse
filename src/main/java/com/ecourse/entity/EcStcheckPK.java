@@ -34,13 +34,21 @@ public class EcStcheckPK implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcStcheckPK that = (EcStcheckPK) o;
 
-        if (checkId != that.checkId) return false;
-        if (userId != that.userId) return false;
+        if (checkId != that.checkId) {
+            return false;
+        }
+        if (userId != that.userId) {
+            return false;
+        }
 
         return true;
     }

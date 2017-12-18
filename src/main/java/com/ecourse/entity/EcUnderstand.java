@@ -57,15 +57,27 @@ public class EcUnderstand {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcUnderstand that = (EcUnderstand) o;
 
-        if (undId != that.undId) return false;
-        if (courseId != that.courseId) return false;
-        if (undTime != null ? !undTime.equals(that.undTime) : that.undTime != null) return false;
-        if (undMaximum != null ? !undMaximum.equals(that.undMaximum) : that.undMaximum != null) return false;
+        if (undId != that.undId) {
+            return false;
+        }
+        if (courseId != that.courseId) {
+            return false;
+        }
+        if (undTime != null ? !undTime.equals(that.undTime) : that.undTime != null) {
+            return false;
+        }
+        if (undMaximum != null ? !undMaximum.equals(that.undMaximum) : that.undMaximum != null) {
+            return false;
+        }
 
         return true;
     }

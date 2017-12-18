@@ -26,9 +26,18 @@ public interface EcUserDao {
     /**
      * 更具ID和密码查找
      * @param id key
+     * @param password 密码
      * @return 密码和ID正确，返回ID对应的对象，没有查找到为null
      */
     public EcUser findEcUserByLogin(Integer id, String password);
+
+    /**
+     * 按手机号，微信号，邮箱号，学号（工号）进行登陆
+     * @param key 登陆关键字
+     * @param password 密码
+     * @return 密码和ID正确，返回ID对应的对象，没有查找到为null
+     */
+    public EcUser findEcUserByLogin(String key, String password);
 
     /**
      * 其他查找

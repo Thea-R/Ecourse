@@ -168,7 +168,8 @@ public class AESUtil {
         String base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
         StringBuffer Keysb = new StringBuffer();
-        for (int i = 0; i < KeyLength; i++)    //生成指定位数的随机秘钥字符串
+        //生成指定位数的随机秘钥字符串
+        for (int i = 0; i < KeyLength; i++)
         {
             int number = random.nextInt(base.length());
             Keysb.append(base.charAt(number));

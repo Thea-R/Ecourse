@@ -56,15 +56,27 @@ public class EcQuestion {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcQuestion that = (EcQuestion) o;
 
-        if (queId != that.queId) return false;
-        if (queType != null ? !queType.equals(that.queType) : that.queType != null) return false;
-        if (queAns != null ? !queAns.equals(that.queAns) : that.queAns != null) return false;
-        if (queTitle != null ? !queTitle.equals(that.queTitle) : that.queTitle != null) return false;
+        if (queId != that.queId) {
+            return false;
+        }
+        if (queType != null ? !queType.equals(that.queType) : that.queType != null) {
+            return false;
+        }
+        if (queAns != null ? !queAns.equals(that.queAns) : that.queAns != null) {
+            return false;
+        }
+        if (queTitle != null ? !queTitle.equals(that.queTitle) : that.queTitle != null) {
+            return false;
+        }
 
         return true;
     }

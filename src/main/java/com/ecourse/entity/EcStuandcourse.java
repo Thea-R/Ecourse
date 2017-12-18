@@ -35,13 +35,21 @@ public class EcStuandcourse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcStuandcourse that = (EcStuandcourse) o;
 
-        if (courseId != that.courseId) return false;
-        if (userId != that.userId) return false;
+        if (courseId != that.courseId) {
+            return false;
+        }
+        if (userId != that.userId) {
+            return false;
+        }
 
         return true;
     }

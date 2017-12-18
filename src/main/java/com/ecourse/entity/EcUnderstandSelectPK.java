@@ -34,13 +34,21 @@ public class EcUnderstandSelectPK implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcUnderstandSelectPK that = (EcUnderstandSelectPK) o;
 
-        if (undId != that.undId) return false;
-        if (userId != that.userId) return false;
+        if (undId != that.undId) {
+            return false;
+        }
+        if (userId != that.userId) {
+            return false;
+        }
 
         return true;
     }

@@ -46,14 +46,24 @@ public class EcStcheck {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcStcheck ecStcheck = (EcStcheck) o;
 
-        if (checkId != ecStcheck.checkId) return false;
-        if (userId != ecStcheck.userId) return false;
-        if (checkType != null ? !checkType.equals(ecStcheck.checkType) : ecStcheck.checkType != null) return false;
+        if (checkId != ecStcheck.checkId) {
+            return false;
+        }
+        if (userId != ecStcheck.userId) {
+            return false;
+        }
+        if (checkType != null ? !checkType.equals(ecStcheck.checkType) : ecStcheck.checkType != null) {
+            return false;
+        }
 
         return true;
     }

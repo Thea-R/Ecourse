@@ -46,14 +46,24 @@ public class EcUnderstandSelect {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         EcUnderstandSelect that = (EcUnderstandSelect) o;
 
-        if (undId != that.undId) return false;
-        if (userId != that.userId) return false;
-        if (undType != null ? !undType.equals(that.undType) : that.undType != null) return false;
+        if (undId != that.undId) {
+            return false;
+        }
+        if (userId != that.userId) {
+            return false;
+        }
+        if (undType != null ? !undType.equals(that.undType) : that.undType != null) {
+            return false;
+        }
 
         return true;
     }
