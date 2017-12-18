@@ -50,9 +50,14 @@ public class AccountValidatorUtil {
     public static final String REGEX_IP_ADDR = "(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)";
 
     /**
+     * 正则表达式：验证String是不是数字
+     */
+    public static final String REGEX_NUMERIC = "[0-9]*";
+
+    /**
      * 校验用户名
      *
-     * @param username
+     * @param username 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isUsername(String username) {
@@ -62,7 +67,7 @@ public class AccountValidatorUtil {
     /**
      * 校验密码
      *
-     * @param password
+     * @param password 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isPassword(String password) {
@@ -72,7 +77,7 @@ public class AccountValidatorUtil {
     /**
      * 校验手机号
      *
-     * @param mobile
+     * @param mobile 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isMobile(String mobile) {
@@ -82,7 +87,7 @@ public class AccountValidatorUtil {
     /**
      * 校验邮箱
      *
-     * @param email
+     * @param email 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isEmail(String email) {
@@ -92,7 +97,7 @@ public class AccountValidatorUtil {
     /**
      * 校验汉字
      *
-     * @param chinese
+     * @param chinese 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isChinese(String chinese) {
@@ -102,7 +107,7 @@ public class AccountValidatorUtil {
     /**
      * 校验身份证
      *
-     * @param idCard
+     * @param idCard 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isIDCard(String idCard) {
@@ -112,7 +117,7 @@ public class AccountValidatorUtil {
     /**
      * 校验URL
      *
-     * @param url
+     * @param url 检验的字符串
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isUrl(String url) {
@@ -122,10 +127,20 @@ public class AccountValidatorUtil {
     /**
      * 校验IP地址
      *
-     * @param ipAddr
-     * @return
+     * @param ipAddr 检验的字符串
+     * @return 校验通过返回true，否则返回false
      */
     public static boolean isIPAddr(String ipAddr) {
         return Pattern.matches(REGEX_IP_ADDR, ipAddr);
+    }
+
+    /**
+     * 校验String是不是数字
+     *
+     * @param num 检验的字符串
+     * @return 校验通过返回true，否则返回false
+     */
+    public static boolean isNumeric(String num) {
+        return Pattern.matches(REGEX_NUMERIC, num);
     }
 }
