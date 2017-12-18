@@ -24,7 +24,7 @@ public interface EcUserDao {
     public EcUser findEcUserById(Integer id);
 
     /**
-     * 更具ID和密码查找
+     * 更具ID和密码进行登陆
      * @param id key
      * @param password 密码
      * @return 密码和ID正确，返回ID对应的对象，没有查找到为null
