@@ -31,13 +31,13 @@ public class EcUserController {
      *
      * @param map ModelMap
      * @param request 用户名，密码
-     * @return 登陆的用户或者null
+     * @return 是否登陆成功
      * @throws Exception 异常捕获
      */
     @ResponseBody
     @RequestMapping("/login")
     public Map<String, Object> ecUserLogin(ModelMap map, HttpServletRequest request) throws Exception {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<String, Object>(16);
         String password = request.getParameter("password");
         String key = request.getParameter("ecUserId");
         EcUser ecUser;
@@ -57,23 +57,122 @@ public class EcUserController {
         return resultMap;
     }
 
+    /**
+     * 注册
+     *
+     * @param map ModelMap
+     * @param request 注册信息
+     * @return 是否注册成功
+     * @throws Exception 异常捕获
+     */
     @ResponseBody
     @RequestMapping("/regedit")
     public  Map<String, Object> ecUserRegedit(ModelMap map, HttpServletRequest request) throws Exception{
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<String, Object>(16);
         EcUser ecUser = new EcUser();
-        ecUser.setUserWxId(request.getParameter("userWxId"));
-        ecUser.setUserName(request.getParameter("userName"));
-        ecUser.setUserNum(request.getParameter("userNum"));
-        ecUser.setUserSex(Integer.parseInt(request.getParameter("userSex")));
-        ecUser.setUserSchool(request.getParameter("userSchool"));
-        ecUser.setUserSdept(request.getParameter("userSdept"));
-        ecUser.setUserBirth(DateUtil.fomatDate(request.getParameter("userBirth")));
-        ecUser.setUserPhone(request.getParameter("userPhone"));
-        ecUser.setUserType(Integer.parseInt(request.getParameter("userType")));
+        String str = request.getParameter("userWxId");
+        if (str != null){
+            ecUser.setUserWxId(str);
+        }
+        str = request.getParameter("userName");
+        if (str != null){
+            ecUser.setUserName(str);
+        }
+        str = request.getParameter("userNum");
+        if (str != null){
+            ecUser.setUserNum(str);
+        }
+        str = request.getParameter("userSex");
+        if (str != null){
+            ecUser.setUserSex(Integer.parseInt(str));
+        }
+        str = request.getParameter("userSchool");
+        if (str != null){
+            ecUser.setUserSchool(str);
+        }
+        str = request.getParameter("userSdept");
+        if (str != null){
+            ecUser.setUserSdept(str);
+        }
+        str = request.getParameter("userBirth");
+        if (str != null){
+            ecUser.setUserBirth(DateUtil.fomatDate(str));
+        }
+        str = request.getParameter("userPhone");
+        if (str != null){
+            ecUser.setUserPhone(str);
+        }
+        str = request.getParameter("userType");
+        if (str != null){
+            ecUser.setUserType(Integer.parseInt(str));
+        }
         ecUser.setUserCreatTime(new Date());
-        ecUser.setUserEmail(request.getParameter("userEmail"));
+        str = request.getParameter("userEmail");
+        if (str != null){
+            ecUser.setUserEmail(str);
+        }
         ecUserService.saveEcUser(ecUser);
+        resultMap.put("res", "yes");
+        return resultMap;
+    }
+
+    /**
+     * 修改个人信息
+     *
+     * @param map ModelMap
+     * @param request 修改的信息信息
+     * @return 是否修改成功
+     * @throws Exception 异常捕获
+     */
+    @ResponseBody
+    @RequestMapping("/updateInfo")
+    public  Map<String, Object> ecUserUpdate(ModelMap map, HttpServletRequest request) throws Exception{
+        Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        EcUser ecUser = (EcUser) request.getSession().getAttribute("current_EcUser");
+        String str = request.getParameter("userWxId");
+        if (str != null){
+            ecUser.setUserWxId(str);
+        }
+        str = request.getParameter("userName");
+        if (str != null){
+            ecUser.setUserName(str);
+        }
+        str = request.getParameter("userNum");
+        if (str != null){
+            ecUser.setUserNum(str);
+        }
+        str = request.getParameter("userSex");
+        if (str != null){
+            ecUser.setUserSex(Integer.parseInt(str));
+        }
+        str = request.getParameter("userSchool");
+        if (str != null){
+            ecUser.setUserSchool(str);
+        }
+        str = request.getParameter("userSdept");
+        if (str != null){
+            ecUser.setUserSdept(str);
+        }
+        str = request.getParameter("userBirth");
+        if (str != null){
+            ecUser.setUserBirth(DateUtil.fomatDate(str));
+        }
+        str = request.getParameter("userPhone");
+        if (str != null){
+            ecUser.setUserPhone(str);
+        }
+        str = request.getParameter("userType");
+        if (str != null){
+            ecUser.setUserType(Integer.parseInt(str));
+        }
+        ecUser.setUserCreatTime(new Date());
+        str = request.getParameter("userEmail");
+        if (str != null){
+            ecUser.setUserEmail(str);
+        }
+        ecUserService.updateEcUser(ecUser);
+        request.getSession().setAttribute("current_EcUser", ecUser);
+        resultMap.put("sessionId", request.getSession().getId());
         resultMap.put("res", "yes");
         return resultMap;
     }
