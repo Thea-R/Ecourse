@@ -31,6 +31,11 @@ public class EcUserServiceImpl implements EcUserService {
     }
 
     @Override
+    public EcUser findEcUserByWxId(Integer id) {
+        return ecUserDao.findEcUserByWxId(id);
+    }
+
+    @Override
     public EcUser findEcUserByLogin(Integer id, String password) {
         return ecUserDao.findEcUserByLogin(id, password);
     }

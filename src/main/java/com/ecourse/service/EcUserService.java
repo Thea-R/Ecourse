@@ -25,6 +25,13 @@ public interface EcUserService {
     public EcUser findEcUserById(Integer id);
 
     /**
+     * 更具WxId查找
+     * @param id key
+     * @return 返回ID对应的对象，没有查找到为null
+     */
+    public EcUser findEcUserByWxId(Integer id);
+
+    /**
      * 更具ID和密码查找
      * @param id key
      * @param password 密码
@@ -42,8 +49,7 @@ public interface EcUserService {
 
     /**
      * 其他查找
-     * @param params 查找的属性
-     * @param hql 查找的hql语句
+     * @param map 查找的属性
      * @return 一堆EcUser对象
      */
     public List<EcUser> findEcUser(Map<String, Object> map);

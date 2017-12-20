@@ -68,6 +68,14 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
     }
 
     @Override
+    public EcUser findEcUserByWxId(Integer id) {
+        String hql = "from EcUser where userWxId = ? ";
+        Query query = getSession().createQuery(hql);
+        query.setParameter(0, id);
+        return (EcUser) query.uniqueResult();
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<EcUser> findEcUser(List<Object> params, String hql) {
         Query query = getSession().createQuery(hql);

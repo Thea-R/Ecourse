@@ -24,6 +24,13 @@ public interface EcUserDao {
     public EcUser findEcUserById(Integer id);
 
     /**
+     * 更具WxId查找
+     * @param id key
+     * @return 返回ID对应的对象，没有查找到为null
+     */
+    public EcUser findEcUserByWxId(Integer id);
+
+    /**
      * 更具ID和密码进行登陆
      * @param id key
      * @param password 密码
