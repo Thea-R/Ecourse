@@ -14,6 +14,7 @@ public class EcCheck {
     private Date checkTime;
     private Integer courseId;
     private String checkVerify;
+    private Integer checkState;
 
     @Id
     @Column(name = "Check_Id", nullable = false)
@@ -55,6 +56,17 @@ public class EcCheck {
         this.checkVerify = checkVerify;
     }
 
+    @Basic
+    @Column(name = "Check_State", nullable = true)
+    public Integer getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(Integer checkState) {
+        this.checkState = checkState;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -78,6 +90,9 @@ public class EcCheck {
         if (checkVerify != null ? !checkVerify.equals(ecCheck.checkVerify) : ecCheck.checkVerify != null) {
             return false;
         }
+        if (checkState != null ? !checkState.equals(ecCheck.checkState) : ecCheck.checkState != null) {
+            return false;
+        }
 
         return true;
     }
@@ -88,6 +103,7 @@ public class EcCheck {
         result = 31 * result + (checkTime != null ? checkTime.hashCode() : 0);
         result = 31 * result + (courseId != null ? courseId.hashCode() : 0);
         result = 31 * result + (checkVerify != null ? checkVerify.hashCode() : 0);
+        result = 31 * result + (checkState != null ? checkState.hashCode() : 0);
         return result;
     }
 }
