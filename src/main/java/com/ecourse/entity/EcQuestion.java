@@ -13,6 +13,7 @@ public class EcQuestion {
     private int queId;
     private Integer courseId;
     private Integer queType;
+    private Integer queState;
     private Integer queAns;
     private String queTitle;
     private Date queTime;
@@ -45,6 +46,16 @@ public class EcQuestion {
 
     public void setQueType(Integer queType) {
         this.queType = queType;
+    }
+
+    @Basic
+    @Column(name = "Que_State", nullable = true)
+    public Integer getQueState() {
+        return queState;
+    }
+
+    public void setQueState(Integer quState) {
+        this.queState = queState;
     }
 
     @Basic
@@ -97,6 +108,9 @@ public class EcQuestion {
         if (queType != null ? !queType.equals(that.queType) : that.queType != null) {
             return false;
         }
+        if (queState != null ? !queState.equals(that.queState) : that.queState != null) {
+            return false;
+        }
         if (queAns != null ? !queAns.equals(that.queAns) : that.queAns != null) {
             return false;
         }
@@ -115,6 +129,7 @@ public class EcQuestion {
         int result = queId;
         result = 31 * result + (courseId != null ? courseId.hashCode() : 0);
         result = 31 * result + (queType != null ? queType.hashCode() : 0);
+        result = 31 * result + (queState != null ? queState.hashCode() : 0);
         result = 31 * result + (queAns != null ? queAns.hashCode() : 0);
         result = 31 * result + (queTitle != null ? queTitle.hashCode() : 0);
         result = 31 * result + (queTime != null ? queTime.hashCode() : 0);
