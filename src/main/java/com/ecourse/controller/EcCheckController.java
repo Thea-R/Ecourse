@@ -120,7 +120,6 @@ public class EcCheckController {
         for (EcCheck e : ecChecks) {
             checkResult = new CheckResult();
             checkResult.setEcCheck(e);
-            System.out.println(e.getCheckId() + "\t\t" + checkResult.getCheckId() + "\t\t" + checkResult.getCheckTime());
             checkResult.setCheckAllNum(ecStuandcourseService.findEcStuandcourseByCourseId(e.getCourseId()).size());
             findMap.clear();
             findMap.remove("checkId");
@@ -128,9 +127,6 @@ public class EcCheckController {
             findMap.put("checkType", 5);
             checkResult.setCheckYesNum(ecStcheckService.findEcStcheck(findMap).size());
             checkResults.add(checkResult);
-        }
-        for (CheckResult c:checkResults){
-            System.out.println("c.getCheckId()的值是：---"+ c.getCheckId() + "，当前方法=EcCheckController.ecCheckFindCourseCheck()");
         }
         resultMap.put("ecChecks", checkResults);
         resultMap.put("res", "yes");
