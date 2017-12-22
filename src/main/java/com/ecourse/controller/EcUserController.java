@@ -2,7 +2,6 @@ package com.ecourse.controller;
 
 import com.ecourse.entity.EcUser;
 import com.ecourse.service.EcUserService;
-import com.ecourse.untils.AESUtil;
 import com.ecourse.untils.AccountValidatorUtil;
 import com.ecourse.untils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,6 +110,10 @@ public class EcUserController {
         str = request.getParameter("userEmail");
         if (str != null){
             ecUser.setUserEmail(str);
+        }
+        str = request.getParameter("userFaviconUrl");
+        if (str != null){
+            ecUser.setUserFaviconUrl(str);
         }
         ecUserService.saveEcUser(ecUser);
         resultMap.put("res", "yes");

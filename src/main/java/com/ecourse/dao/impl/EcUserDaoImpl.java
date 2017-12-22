@@ -48,12 +48,12 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
             hql.append(" and userPhone=? ");
         }
         else {
-            Query query = getSession().createQuery(hql.toString() + " userNum=? and userPassword=?");
+            Query query = getSession().createQuery(hql.toString() + " and userNum=? and userPassword=?");
             query.setParameter(0, key);
             query.setParameter(1, password);
             EcUser ecUser = (EcUser) query.uniqueResult();
             if (ecUser == null){
-                query = getSession().createQuery(hql.toString() + " userWxId=? and userPassword=?");
+                query = getSession().createQuery(hql.toString() + " and userWxId=? and userPassword=?");
                 query.setParameter(0, key);
                 query.setParameter(1, password);
                 return (EcUser) query.uniqueResult();

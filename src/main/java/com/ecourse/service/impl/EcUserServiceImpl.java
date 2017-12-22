@@ -66,6 +66,22 @@ public class EcUserServiceImpl implements EcUserService {
             hql.append(" and userName=? ");
             params.add(map.get("userName"));
         }
+        if (map.get("userSdept") != null) {
+            hql.append(" and userSdept=? ");
+            params.add(map.get("userSdept"));
+        }
+        if (map.get("userPhone") != null) {
+            hql.append(" and userPhone=? ");
+            params.add(map.get("userPhone"));
+        }
+        if (map.get("userType") != null) {
+            hql.append(" and userType=? ");
+            params.add(map.get("userType"));
+        }
+        if (map.get("userEmail") != null) {
+            hql.append(" and userEmail=? ");
+            params.add(map.get("userEmail"));
+        }
 
         //System.out.println(hql.toString());
         return ecUserDao.findEcUser(params, hql.toString());
