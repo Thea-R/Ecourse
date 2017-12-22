@@ -3,7 +3,6 @@ package com.ecourse.dao.impl;
 import com.ecourse.dao.EcUserDao;
 import com.ecourse.entity.EcUser;
 import com.ecourse.untils.AccountValidatorUtil;
-import org.apache.ibatis.jdbc.Null;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -41,18 +40,16 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
     @Override
     public EcUser findEcUserByLogin(String key, String password) {
         StringBuilder hql = new StringBuilder("from EcUser where 1=1 ");
-        if (AccountValidatorUtil.isEmail(key)){
+        if (AccountValidatorUtil.isEmail(key)) {
             hql.append(" and userEmail=? ");
-        }
-        else if (AccountValidatorUtil.isMobile(key)){
+        } else if (AccountValidatorUtil.isMobile(key)) {
             hql.append(" and userPhone=? ");
-        }
-        else {
+        } else {
             Query query = getSession().createQuery(hql.toString() + " and userNum=? and userPassword=?");
             query.setParameter(0, key);
             query.setParameter(1, password);
             EcUser ecUser = (EcUser) query.uniqueResult();
-            if (ecUser == null){
+            if (ecUser == null) {
                 query = getSession().createQuery(hql.toString() + " and userWxId=? and userPassword=?");
                 query.setParameter(0, key);
                 query.setParameter(1, password);
