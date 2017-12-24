@@ -41,7 +41,10 @@ public class EcUserController {
         String password = request.getParameter("password");
         String key = request.getParameter("ecUserId");
         EcUser ecUser;
-        if (AccountValidatorUtil.isNumeric(key)) {
+        if (AccountValidatorUtil.isMobile(key)) {
+            ecUser = ecUserService.findEcUserByLogin(key, password);
+        }
+        else if (AccountValidatorUtil.isNumeric(key)) {
             ecUser = ecUserService.findEcUserByLogin(Integer.parseInt(key), password);
         } else {
             ecUser = ecUserService.findEcUserByLogin(key, password);
@@ -76,6 +79,7 @@ public class EcUserController {
         str = request.getParameter("userName");
         if (str != null) {
             ecUser.setUserName(str);
+            System.out.println(str);
         }
         str = request.getParameter("userNum");
         if (str != null) {
@@ -96,6 +100,10 @@ public class EcUserController {
         str = request.getParameter("userBirth");
         if (str != null) {
             ecUser.setUserBirth(DateUtil.fomatDate(str));
+        }
+        str = request.getParameter("userPassWord");
+        if (str != null) {
+            ecUser.setUserPassword(str);
         }
         str = request.getParameter("userPhone");
         if (str != null) {
