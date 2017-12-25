@@ -81,6 +81,11 @@ public class EcUserController {
             ecUser.setUserName(str);
             System.out.println(str);
         }
+        str = request.getParameter("userTrueName");
+        if (str != null) {
+            ecUser.setUserTrueName(str);
+            System.out.println(str);
+        }
         str = request.getParameter("userNum");
         if (str != null) {
             ecUser.setUserNum(str);

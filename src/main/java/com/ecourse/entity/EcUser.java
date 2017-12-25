@@ -24,6 +24,7 @@ public class EcUser {
     private Date userCreatTime;
     private String userEmail;
     private String userFaviconUrl;
+    private String userTrueName;
 
     @Id
     @Column(name = "User_Id", nullable = false)
@@ -165,6 +166,16 @@ public class EcUser {
         this.userFaviconUrl = userFaviconUrl;
     }
 
+    @Basic
+    @Column(name = "User_TrueName", nullable = true, length = 255)
+    public String getUserTrueName() {
+        return userTrueName;
+    }
+
+    public void setUserTrueName(String userTrueName) {
+        this.userTrueName = userTrueName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -218,6 +229,9 @@ public class EcUser {
         if (userFaviconUrl != null ? !userFaviconUrl.equals(ecUser.userFaviconUrl) : ecUser.userFaviconUrl != null) {
             return false;
         }
+        if (userTrueName != null ? !userTrueName.equals(ecUser.userTrueName) : ecUser.userTrueName != null) {
+            return false;
+        }
 
         return true;
     }
@@ -238,6 +252,7 @@ public class EcUser {
         result = 31 * result + (userCreatTime != null ? userCreatTime.hashCode() : 0);
         result = 31 * result + (userEmail != null ? userEmail.hashCode() : 0);
         result = 31 * result + (userFaviconUrl != null ? userFaviconUrl.hashCode() : 0);
+        result = 31 * result + (userTrueName != null ? userTrueName.hashCode() : 0);
         return result;
     }
 }
