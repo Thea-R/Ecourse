@@ -24,7 +24,10 @@ public interface EcUserDao {
      * @return 返回ID对应的对象，没有查找到为null
      */
     public EcUser findEcUserById(Integer id);
-
+    /**
+     * 根据电话号码和邮箱查询
+     */
+    public EcUser findEcUserByPhandMa(String mail,String phone );
     /**
      * 更具WxId查找
      *

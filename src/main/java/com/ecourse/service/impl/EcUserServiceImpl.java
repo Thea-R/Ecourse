@@ -31,6 +31,11 @@ public class EcUserServiceImpl implements EcUserService {
     }
 
     @Override
+    public EcUser findEcUserByPhandMa(String mail, String phone) {
+        return ecUserDao.findEcUserByPhandMa(mail,phone);
+    }
+
+    @Override
     public EcUser findEcUserByWxId(Integer id) {
         return ecUserDao.findEcUserByWxId(id);
     }

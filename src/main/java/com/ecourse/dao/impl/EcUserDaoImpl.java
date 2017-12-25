@@ -29,6 +29,15 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
     }
 
     @Override
+    public EcUser findEcUserByPhandMa(String mail,String phone ){
+        String hql="from EcUser where userEmail=? and userPhone=?";
+        Query query=getSession().createQuery(hql);
+        query.setParameter(0,mail);
+        query.setParameter(1,phone);
+        return (EcUser) query.uniqueResult();
+    }
+
+    @Override
     public EcUser findEcUserByLogin(Integer id, String password) {
         String hql = "from EcUser where userId=? and userPassword=?";
         Query query = getSession().createQuery(hql);
