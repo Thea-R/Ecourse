@@ -233,7 +233,27 @@ public class EcUserController {
     @RequestMapping("/forgetPassword")
     public Map<String, Object> ecUserForgetPassword(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
+
+        String userName = request.getParameter("userName");
+        String userPhone = request.getParameter("phoneId");
+        String userEmail = request.getParameter("mailId");
+
+        EcUser ecUser;
+        ecUser = (EcUser) ecUserService.findEcUserByPhandMa(userEmail,userPhone);
+        if (ecUser != null) {
+            int userId=ecUser.getUserId();
+            resultMap.put("userId",userId);
+            resultMap.put("res", "yes");
+            System.out.println(ecUser.getUserId());
+            return resultMap;
+        }
+        else{
+            resultMap.put("res","no");
+            return resultMap;
+        }
+    }
+        /*String str = request.getParameter("userWxId");
+
         EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
         str = request.getParameter("userName");
         if (str == null || ecUser.getUserName().equals(str)) {
@@ -256,8 +276,8 @@ public class EcUserController {
             return resultMap;
         }
         resultMap.put("res", "yes");
-        return resultMap;
-    }
+        return resultMap;*/
+
 
     /**
      * 忘记密码验证成功后修改密码
@@ -271,9 +291,14 @@ public class EcUserController {
     @RequestMapping("/updatePassword_forget")
     public Map<String, Object> ecUserUpdatePasswordForget(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
-        EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
+//        String str = request.getParameter("userWxId");
+//        EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
+        String str= request.getParameter("ecUserId");
+        System.out.println(str);
+        EcUser ecUser = ecUserService.findEcUserById(Integer.parseInt(str));
+        System.out.println(ecUser.getUserPassword());
         str = request.getParameter("userPassword");
+        System.out.println(str);
         /*str = AESUtil.HMACSHA256(str, "ecourse");*/
         ecUser.setUserPassword(str);
         ecUserService.updateEcUser(ecUser);
