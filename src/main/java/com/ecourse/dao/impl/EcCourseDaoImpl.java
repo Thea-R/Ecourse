@@ -32,7 +32,7 @@ public class EcCourseDaoImpl extends BaseDaoImpl implements EcCourseDao {
      */
     @Override
     public EcCourse findEcCourseById(Integer id) {
-        String hql = "from EcCourse where checkId=?";
+        String hql = "from EcCourse where courseId=?";
         Query query = getSession().createQuery(hql);
         query.setParameter(0, id);
         return (EcCourse) query.uniqueResult();
