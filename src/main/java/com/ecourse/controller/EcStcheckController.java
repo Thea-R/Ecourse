@@ -1,8 +1,10 @@
 package com.ecourse.controller;
 
 import com.ecourse.AjaxResult.StuCheckResult;
+import com.ecourse.entity.EcCheck;
 import com.ecourse.entity.EcStcheck;
 import com.ecourse.entity.EcUser;
+import com.ecourse.service.EcCheckService;
 import com.ecourse.service.EcStcheckService;
 import com.ecourse.service.EcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class EcStcheckController {
 
     @Autowired
     EcStcheckService ecStcheckService;
+
+    @Autowired
+    EcCheckService ecCheckService;
 
     @Autowired
     EcUserService ecUserService;
@@ -106,6 +111,39 @@ public class EcStcheckController {
             return resultMap;
         }
         ecStcheck.setCheckType(checkType);
+        ecStcheckService.updateEcStcheck(ecStcheck);
+        resultMap.put("res", "yes");
+        return resultMap;
+    }
+
+    /**
+     * 学生签到
+     *
+     * @param map     ModelMap
+     * @param request 前端请求
+     * @return 是更改成功
+     * @throws Exception 异常捕获
+     */
+    @ResponseBody
+    @RequestMapping("/newStcCheck")
+    public Map<String, Object> ecStccheckNewStcCheck(ModelMap map, HttpServletRequest request) throws Exception {
+        Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        String checkVerify = request.getParameter("checkVerify");
+        int checkId = Integer.parseInt(request.getParameter("checkId"));
+        int userId = 223;
+        EcCheck ecCheck = ecCheckService.findEcCheckById(checkId);
+        EcStcheck ecStcheck = ecStcheckService.findEcStcheckById(checkId, userId);
+        if (ecStcheck == null || ecCheck == null || !ecCheck.getCheckVerify().equals(checkVerify)) {
+            resultMap.put("res", "no");
+            return resultMap;
+        }
+        int checkTypeYes = 5;
+        if (ecStcheck.getCheckType() == checkTypeYes) {
+            resultMap.put("res", "no");
+            resultMap.put("repeat", "yes");
+            return resultMap;
+        }
+        ecStcheck.setCheckType(5);
         ecStcheckService.updateEcStcheck(ecStcheck);
         resultMap.put("res", "yes");
         return resultMap;

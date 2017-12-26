@@ -2,6 +2,8 @@ package com.ecourse.controller;
 
 import com.ecourse.AjaxResult.CheckResult;
 import com.ecourse.entity.EcCheck;
+import com.ecourse.entity.EcStcheck;
+import com.ecourse.entity.EcStuandcourse;
 import com.ecourse.service.EcCheckService;
 import com.ecourse.service.EcStcheckService;
 import com.ecourse.service.EcStuandcourseService;
@@ -61,6 +63,19 @@ public class EcCheckController {
         ecCheck.setCheckVerify(CommonUtil.generateUUID(6));
         ecCheck.setCheckState(1);
         ecCheckService.saveEcCheck(ecCheck);
+        findMap = new HashMap<String, Object>(16);
+        findMap.put("courseId", courseId);
+        findMap.put("checkState", 1);
+        ecCheck = ecCheckService.findEcCheck(findMap).get(0);
+        EcStcheck ecStcheck = new EcStcheck();
+        List<EcStuandcourse> ecStuandcourses = ecStuandcourseService.findEcStuandcourseByCourseId(courseId);
+        for (EcStuandcourse e : ecStuandcourses){
+            ecStcheck = new EcStcheck();
+            ecStcheck.setCheckId(ecCheck.getCheckId());
+            ecStcheck.setUserId(e.getUserId());
+            ecStcheck.setCheckType(0);
+            ecStcheckService.saveEcStcheck(ecStcheck);
+        }
         resultMap.put("checkVerify", ecCheck.getCheckVerify());
         resultMap.put("res", "yes");
         return resultMap;
@@ -130,6 +145,33 @@ public class EcCheckController {
         }
         resultMap.put("ecChecks", checkResults);
         resultMap.put("res", "yes");
+        return resultMap;
+    }
+
+    /**
+     * 学生查看该课程是否在签到
+     *
+     * @param map     ModelMap
+     * @param request 前端请求
+     * @return 是更改成功
+     * @throws Exception 异常捕获
+     */
+    @ResponseBody
+    @RequestMapping("/findTheCourseisCheck")
+    public Map<String, Object> ecStccheckNewStcCheck(ModelMap map, HttpServletRequest request) throws Exception {
+        Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        //Integer.parseInt(request.getSession().getAttribute("current_EcCourse"))
+        int courseId = 1;
+        Map<String, Object> findMap = new HashMap<String, Object>(16);
+        findMap.put("courseId", courseId);
+        findMap.put("checkState", 1);
+        List<EcCheck> ecChecks = ecCheckService.findEcCheck(findMap);
+        if (ecChecks.size() > 0) {
+            resultMap.put("checkId", ecChecks.get(0).getCheckId());
+            resultMap.put("res", "yes");
+        } else {
+            resultMap.put("res", "no");
+        }
         return resultMap;
     }
 }
