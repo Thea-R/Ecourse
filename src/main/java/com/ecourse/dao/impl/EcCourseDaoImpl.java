@@ -32,7 +32,7 @@ public class EcCourseDaoImpl extends BaseDaoImpl implements EcCourseDao {
      */
     @Override
     public EcCourse findEcCourseById(Integer id) {
-        String hql = "from EcCourse where checkId=?";
+        String hql = "from EcCourse where courseId=?";
         Query query = getSession().createQuery(hql);
         query.setParameter(0, id);
         return (EcCourse) query.uniqueResult();
@@ -46,14 +46,25 @@ public class EcCourseDaoImpl extends BaseDaoImpl implements EcCourseDao {
      * @return 一堆EcCourse对象
      */
     @Override
-    @SuppressWarnings("unchecked")
+
     public List<EcCourse> findEcCourse(List<Object> params, String hql) {
+        System.out.println("???");
         Query query = getSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             for (int i = 0; i < params.size(); i++) {
                 query.setParameter(i, params.get(i));
             }
         }
+        System.out.println("???");
+        return query.list();
+    }
+
+    @Override
+    public List<EcCourse> findEcCourseByuserId(Integer id)
+    {
+        String hql = "from EcCourse where userId=?";
+        Query query = getSession().createQuery(hql);
+        query.setParameter(0, id);
         return query.list();
     }
 
