@@ -41,7 +41,10 @@ public class EcUserController {
         String password = request.getParameter("password");
         String key = request.getParameter("ecUserId");
         EcUser ecUser;
-        if (AccountValidatorUtil.isNumeric(key)) {
+        if (AccountValidatorUtil.isMobile(key)) {
+            ecUser = ecUserService.findEcUserByLogin(key, password);
+        }
+        else if (AccountValidatorUtil.isNumeric(key)) {
             ecUser = ecUserService.findEcUserByLogin(Integer.parseInt(key), password);
         } else {
             ecUser = ecUserService.findEcUserByLogin(key, password);
@@ -50,6 +53,7 @@ public class EcUserController {
             request.getSession().setAttribute("current_EcUser", ecUser);
             resultMap.put("sessionId", request.getSession().getId());
             resultMap.put("res", "yes");
+            resultMap.put("user",ecUser);
         } else {
             resultMap.put("res", "no");
         }
@@ -76,6 +80,12 @@ public class EcUserController {
         str = request.getParameter("userName");
         if (str != null) {
             ecUser.setUserName(str);
+            System.out.println(str);
+        }
+        str = request.getParameter("userTrueName");
+        if (str != null) {
+            ecUser.setUserTrueName(str);
+            System.out.println(str);
         }
         str = request.getParameter("userNum");
         if (str != null) {
@@ -96,6 +106,10 @@ public class EcUserController {
         str = request.getParameter("userBirth");
         if (str != null) {
             ecUser.setUserBirth(DateUtil.fomatDate(str));
+        }
+        str = request.getParameter("userPassWord");
+        if (str != null) {
+            ecUser.setUserPassword(str);
         }
         str = request.getParameter("userPhone");
         if (str != null) {
@@ -192,15 +206,15 @@ public class EcUserController {
     @RequestMapping("/updatePassword_info")
     public Map<String, Object> ecUserUpdatePasswordInfo(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
-        EcUser ecUser = (EcUser) request.getSession().getAttribute("current_EcUser");
-        String str1 = request.getParameter("userPassword_old");
-        if (ecUser.getUserWxId().equals(str) && ecUser.getUserPassword().equals(str1)) {
-            str = request.getParameter("userPassword_new");
-            ecUser.setUserPassword(str);
+        //String str = request.getParameter("userWxId");
+        //EcUser ecUser = (EcUser) request.getSession().getAttribute("current_EcUser");
+        String userId=request.getParameter("userId");
+        EcUser ecUser=ecUserService.findEcUserById(Integer.parseInt(userId));
+        String str1 = request.getParameter("passWord");
+        if (ecUser!=null) {
+
+            ecUser.setUserPassword(str1);
             ecUserService.updateEcUser(ecUser);
-            request.getSession().setAttribute("current_EcUser", ecUser);
-            resultMap.put("sessionId", request.getSession().getId());
             resultMap.put("res", "yes");
         } else {
             resultMap.put("res", "no");
@@ -220,7 +234,27 @@ public class EcUserController {
     @RequestMapping("/forgetPassword")
     public Map<String, Object> ecUserForgetPassword(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
+
+        String userName = request.getParameter("userName");
+        String userPhone = request.getParameter("phoneId");
+        String userEmail = request.getParameter("mailId");
+
+        EcUser ecUser;
+        ecUser = (EcUser) ecUserService.findEcUserByPhandMa(userEmail,userPhone);
+        if (ecUser != null) {
+            int userId=ecUser.getUserId();
+            resultMap.put("userId",userId);
+            resultMap.put("res", "yes");
+            System.out.println(ecUser.getUserId());
+            return resultMap;
+        }
+        else{
+            resultMap.put("res","no");
+            return resultMap;
+        }
+    }
+        /*String str = request.getParameter("userWxId");
+
         EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
         str = request.getParameter("userName");
         if (str == null || ecUser.getUserName().equals(str)) {
@@ -243,8 +277,8 @@ public class EcUserController {
             return resultMap;
         }
         resultMap.put("res", "yes");
-        return resultMap;
-    }
+        return resultMap;*/
+
 
     /**
      * 忘记密码验证成功后修改密码
@@ -258,9 +292,14 @@ public class EcUserController {
     @RequestMapping("/updatePassword_forget")
     public Map<String, Object> ecUserUpdatePasswordForget(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
-        EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
+//        String str = request.getParameter("userWxId");
+//        EcUser ecUser = ecUserService.findEcUserByWxId(Integer.parseInt(str));
+        String str= request.getParameter("ecUserId");
+        System.out.println(str);
+        EcUser ecUser = ecUserService.findEcUserById(Integer.parseInt(str));
+        System.out.println(ecUser.getUserPassword());
         str = request.getParameter("userPassword");
+        System.out.println(str);
         /*str = AESUtil.HMACSHA256(str, "ecourse");*/
         ecUser.setUserPassword(str);
         ecUserService.updateEcUser(ecUser);

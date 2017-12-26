@@ -35,13 +35,13 @@ public class EcAnswerServiceImpl implements EcAnswerService {
         StringBuilder hql = new StringBuilder("from EcAnswer where 1=1 ");
         List<Object> params = new LinkedList<Object>();
 
+        if (map.get("ansId") != null) {
+            hql.append(" and ansId=? ");
+            params.add(map.get("ansId"));
+        }
         if (map.get("userId") != null) {
             hql.append(" and userId=? ");
             params.add(map.get("userId"));
-        }
-        if (map.get("testId") != null) {
-            hql.append(" and testId=? ");
-            params.add(map.get("testId"));
         }
         if (map.get("queId") != null) {
             hql.append(" and queId=? ");
