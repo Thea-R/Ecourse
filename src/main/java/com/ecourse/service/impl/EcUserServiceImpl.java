@@ -31,6 +31,11 @@ public class EcUserServiceImpl implements EcUserService {
     }
 
     @Override
+    public EcUser findEcUserByPhandMa(String mail, String phone) {
+        return ecUserDao.findEcUserByPhandMa(mail,phone);
+    }
+
+    @Override
     public EcUser findEcUserByWxId(Integer id) {
         return ecUserDao.findEcUserByWxId(id);
     }
@@ -65,6 +70,22 @@ public class EcUserServiceImpl implements EcUserService {
         if (map.get("userName") != null) {
             hql.append(" and userName=? ");
             params.add(map.get("userName"));
+        }
+        if (map.get("userSdept") != null) {
+            hql.append(" and userSdept=? ");
+            params.add(map.get("userSdept"));
+        }
+        if (map.get("userPhone") != null) {
+            hql.append(" and userPhone=? ");
+            params.add(map.get("userPhone"));
+        }
+        if (map.get("userType") != null) {
+            hql.append(" and userType=? ");
+            params.add(map.get("userType"));
+        }
+        if (map.get("userEmail") != null) {
+            hql.append(" and userEmail=? ");
+            params.add(map.get("userEmail"));
         }
 
         //System.out.println(hql.toString());

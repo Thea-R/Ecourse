@@ -3,7 +3,6 @@ package com.ecourse.dao.impl;
 import com.ecourse.dao.EcUserDao;
 import com.ecourse.entity.EcUser;
 import com.ecourse.untils.AccountValidatorUtil;
-import org.apache.ibatis.jdbc.Null;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +29,15 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
     }
 
     @Override
+    public EcUser findEcUserByPhandMa(String mail,String phone ){
+        String hql="from EcUser where userEmail=? and userPhone=?";
+        Query query=getSession().createQuery(hql);
+        query.setParameter(0,mail);
+        query.setParameter(1,phone);
+        return (EcUser) query.uniqueResult();
+    }
+
+    @Override
     public EcUser findEcUserByLogin(Integer id, String password) {
         String hql = "from EcUser where userId=? and userPassword=?";
         Query query = getSession().createQuery(hql);
@@ -41,19 +49,17 @@ public class EcUserDaoImpl extends BaseDaoImpl implements EcUserDao {
     @Override
     public EcUser findEcUserByLogin(String key, String password) {
         StringBuilder hql = new StringBuilder("from EcUser where 1=1 ");
-        if (AccountValidatorUtil.isEmail(key)){
+        if (AccountValidatorUtil.isEmail(key)) {
             hql.append(" and userEmail=? ");
-        }
-        else if (AccountValidatorUtil.isMobile(key)){
+        } else if (AccountValidatorUtil.isMobile(key)) {
             hql.append(" and userPhone=? ");
-        }
-        else {
-            Query query = getSession().createQuery(hql.toString() + " userNum=? and userPassword=?");
+        } else {
+            Query query = getSession().createQuery(hql.toString() + " and userNum=? and userPassword=?");
             query.setParameter(0, key);
             query.setParameter(1, password);
             EcUser ecUser = (EcUser) query.uniqueResult();
-            if (ecUser == null){
-                query = getSession().createQuery(hql.toString() + " userWxId=? and userPassword=?");
+            if (ecUser == null) {
+                query = getSession().createQuery(hql.toString() + " and userWxId=? and userPassword=?");
                 query.setParameter(0, key);
                 query.setParameter(1, password);
                 return (EcUser) query.uniqueResult();

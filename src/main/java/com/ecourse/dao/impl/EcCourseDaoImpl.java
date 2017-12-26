@@ -1,26 +1,27 @@
 package com.ecourse.dao.impl;
 
-import com.ecourse.dao.EcAnswerDao;
-import com.ecourse.entity.EcAnswer;
+import com.ecourse.dao.EcCourseDao;
+import com.ecourse.entity.EcCourse;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
  * @author tomato
- * @create 2017-12-14 上午9:29
+ * @create 2017-12-22 下午8:11
  */
 @Repository
-public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
+public class EcCourseDaoImpl extends BaseDaoImpl implements EcCourseDao {
 
     /**
      * 保存
      *
-     * @param ecAnswer 保存数据
+     * @param ecCourse 保存数据
      */
     @Override
-    public void saveEcAnswer(EcAnswer ecAnswer) {
-        getSession().save(ecAnswer);
+    public void saveEcCourse(EcCourse ecCourse) {
+        getSession().save(ecCourse);
     }
 
     /**
@@ -30,11 +31,11 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      * @return 返回ID对应的对象，没有查找到为null
      */
     @Override
-    public EcAnswer findEcAnswerById(Integer id) {
-        String hql = "from EcAnswer where ansId=?";
+    public EcCourse findEcCourseById(Integer id) {
+        String hql = "from EcCourse where checkId=?";
         Query query = getSession().createQuery(hql);
         query.setParameter(0, id);
-        return (EcAnswer) query.uniqueResult();
+        return (EcCourse) query.uniqueResult();
     }
 
     /**
@@ -42,11 +43,11 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
      *
      * @param params 查找的属性
      * @param hql    查找的hql语句
-     * @return 一堆EcAnswer对象
+     * @return 一堆EcCourse对象
      */
     @Override
     @SuppressWarnings("unchecked")
-    public List<EcAnswer> findEcAnswer(List<Object> params, String hql) {
+    public List<EcCourse> findEcCourse(List<Object> params, String hql) {
         Query query = getSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             for (int i = 0; i < params.size(); i++) {
@@ -57,22 +58,22 @@ public class EcAnswerDaoImpl extends BaseDaoImpl implements EcAnswerDao {
     }
 
     /**
-     * 更新EcAnswer
+     * 更新EcCourse
      *
-     * @param ecAnswer 需要更新的EcAnswer持久化对象
+     * @param ecCourse 需要更新的EcCourse持久化对象
      */
     @Override
-    public void updateEcAnswer(EcAnswer ecAnswer) {
-        getSession().update(ecAnswer);
+    public void updateEcCourse(EcCourse ecCourse) {
+        getSession().update(ecCourse);
     }
 
     /**
-     * 删除EcAnswer
+     * 删除EcCourse
      *
-     * @param ecAnswer 需要删除的EcAnswer
+     * @param ecCourse 需要删除的EcCourse
      */
     @Override
-    public void deletEcAnswer(EcAnswer ecAnswer) {
-        getSession().delete(ecAnswer);
+    public void deletEcCourse(EcCourse ecCourse) {
+        getSession().delete(ecCourse);
     }
 }
