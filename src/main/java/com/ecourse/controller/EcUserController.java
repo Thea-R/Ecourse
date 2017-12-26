@@ -53,6 +53,7 @@ public class EcUserController {
             request.getSession().setAttribute("current_EcUser", ecUser);
             resultMap.put("sessionId", request.getSession().getId());
             resultMap.put("res", "yes");
+            resultMap.put("user",ecUser);
         } else {
             resultMap.put("res", "no");
         }
@@ -205,15 +206,15 @@ public class EcUserController {
     @RequestMapping("/updatePassword_info")
     public Map<String, Object> ecUserUpdatePasswordInfo(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        String str = request.getParameter("userWxId");
-        EcUser ecUser = (EcUser) request.getSession().getAttribute("current_EcUser");
-        String str1 = request.getParameter("userPassword_old");
-        if (ecUser.getUserWxId().equals(str) && ecUser.getUserPassword().equals(str1)) {
-            str = request.getParameter("userPassword_new");
-            ecUser.setUserPassword(str);
+        //String str = request.getParameter("userWxId");
+        //EcUser ecUser = (EcUser) request.getSession().getAttribute("current_EcUser");
+        String userId=request.getParameter("userId");
+        EcUser ecUser=ecUserService.findEcUserById(Integer.parseInt(userId));
+        String str1 = request.getParameter("passWord");
+        if (ecUser!=null) {
+
+            ecUser.setUserPassword(str1);
             ecUserService.updateEcUser(ecUser);
-            request.getSession().setAttribute("current_EcUser", ecUser);
-            resultMap.put("sessionId", request.getSession().getId());
             resultMap.put("res", "yes");
         } else {
             resultMap.put("res", "no");
