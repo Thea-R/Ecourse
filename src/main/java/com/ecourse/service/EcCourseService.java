@@ -15,6 +15,8 @@ public interface EcCourseService {
 
     public EcCourse findEcCourseById(Integer id);
 
+    public List<EcCourse> findEcCourseByuserId(Integer id);
+
     public List<EcCourse> findEcCourse(Map<String, Object> map);
 
     public void updateEcCourse(EcCourse ecCourse);
