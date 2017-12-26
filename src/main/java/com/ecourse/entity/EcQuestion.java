@@ -15,7 +15,7 @@ public class EcQuestion {
     private Integer queType;
     private Integer queState;
     private Integer queAns;
-    private String queTitle;
+    private String queTitle;    //以此值存储答题时间
     private Date queTime;
 
     @Id
@@ -54,7 +54,7 @@ public class EcQuestion {
         return queState;
     }
 
-    public void setQueState(Integer quState) {
+    public void setQueState(Integer queState) {
         this.queState = queState;
     }
 

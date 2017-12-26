@@ -4,7 +4,6 @@ import com.ecourse.dao.EcAnswerDao;
 import com.ecourse.entity.EcAnswer;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 /**
