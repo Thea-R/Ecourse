@@ -1,14 +1,11 @@
 package com.ecourse.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * @author tomato
- * @create 2017-12-18 下午4:59
- */
 @Entity
-@Table(name = "ec_message", schema = "ecourse")
+@Table(name = "ec_message", schema = "ecourse", catalog = "")
 public class EcMessage {
     private int msgId;
     private int userId;
@@ -16,6 +13,46 @@ public class EcMessage {
     private Date msgTime;
     private String msgContent;
     private int msgAnonymous;
+    private double msgStar;
+    private int msgOk;
+
+
+    public int getMsgOk() {
+        return msgOk;
+    }
+
+    public void setMsgOk(int msgOk) {
+        this.msgOk = msgOk;
+    }
+
+    public EcMessage(int msgId, int userId, int courseId, Date msgTime, String msgContent, int msgAnonymous, double msgStar, int msgOk) {
+        this.msgId = msgId;
+        this.userId = userId;
+        this.courseId = courseId;
+        this.msgTime = msgTime;
+        this.msgContent = msgContent;
+        this.msgAnonymous = msgAnonymous;
+        this.msgStar = msgStar;
+        this.msgOk = msgOk;
+    }
+    public EcMessage(){}
+
+
+
+
+
+
+    public void setMsgStar(Double msgStar) {
+        this.msgStar = msgStar;
+    }
+
+    public void setMsgStar(double msgStar) {
+        this.msgStar = msgStar;
+    }
+
+    public void setMsgTime(Timestamp msgTime) {
+        this.msgTime = msgTime;
+    }
 
     @Id
     @Column(name = "Msg_Id", nullable = false)
@@ -119,5 +156,15 @@ public class EcMessage {
         result = 31 * result + (msgContent != null ? msgContent.hashCode() : 0);
         result = 31 * result + msgAnonymous;
         return result;
+    }
+
+    @Basic
+    @Column(name = "Msg_star")
+    public double getMsgStar() {
+        return msgStar;
+    }
+
+    public void setMsgStar(Integer msgStar) {
+        this.msgStar = msgStar;
     }
 }

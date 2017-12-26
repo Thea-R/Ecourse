@@ -25,6 +25,7 @@ public interface EcCourseDao {
      */
     public EcCourse findEcCourseById(Integer id);
 
+    public List<EcCourse> findEcCourseByuserId(Integer id);
     /**
      * 其他查找
      *
