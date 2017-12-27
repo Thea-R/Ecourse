@@ -40,7 +40,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         EcNotice ecNotice = new EcNotice();
 
-        int courseId=1;//session获取
+        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
 
 
         ecNotice.setNotType(Integer.parseInt(request.getParameter("N_type")));
@@ -60,7 +60,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         Map<String, Object> findMap = new HashMap<String, Object>();
 
-        int courseId=1;//session获取
+        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
 
 
         List<EcNotice> ecNoticeList = new ArrayList<EcNotice>();
@@ -77,7 +77,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         Map<String, Object> findMap = new HashMap<String, Object>();
 
-        int courseId=1;//session获取
+        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
 
         List<EcNotice> ecNoticeList = new ArrayList<EcNotice>();
         findMap.put("courseId", courseId);
@@ -93,7 +93,8 @@ public class EcNoticeController {
         Map<String, Object> findMap = new HashMap<String, Object>();
 
         int notId=Integer.parseInt(request.getParameter("notId"));
-        int userId=1;//1到时候session()获取
+        int userId=Integer.parseInt((String)request.getSession().getAttribute("current_EcUserId"));
+
 
         EcNotice ecNotice=new EcNotice();
         ecNotice=ecNoticeService.findEcNoticeById(notId);
@@ -123,7 +124,7 @@ public class EcNoticeController {
         Map<String, Object> findMap = new HashMap<String, Object>();
         Map<String, Object> findMap1= new HashMap<String, Object>();
 
-        int courseId=1;//session获取
+        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
         int notId=Integer.parseInt(request.getParameter("notId"));
 
         List<EcUser> ecUsersList=new ArrayList<EcUser>();//查看通知的学生

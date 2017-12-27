@@ -51,6 +51,7 @@ public class EcUserController {
         }
         if (ecUser != null) {
             request.getSession().setAttribute("current_EcUserId", ecUser.getUserId());
+            System.out.println(request.getSession().getId());
             resultMap.put("sessionId", request.getSession().getId());
             resultMap.put("res", "yes");
             resultMap.put("user",ecUser);

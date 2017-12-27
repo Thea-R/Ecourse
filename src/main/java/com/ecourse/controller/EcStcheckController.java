@@ -49,7 +49,6 @@ public class EcStcheckController {
     public Map<String, Object> ecStccheckFindCheck(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
         int checkId = Integer.parseInt(request.getParameter("checkId"));
-        System.out.println("checkId的值是：---" + checkId + "，当前方法=EcStcheckController.ecCheckFindCourseCheck()");
         Map<String, Object> findMap = new HashMap<String, Object>(16);
         findMap.put("checkId", checkId);
         findMap.put("checkType", 5);

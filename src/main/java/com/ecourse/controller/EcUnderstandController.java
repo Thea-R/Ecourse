@@ -47,7 +47,8 @@ public class EcUnderstandController {
             ecUnderstand.setUndMaximum(Integer.parseInt(str));
         }
 
-        ecUnderstand.setCourseId(123);//后面用session获取
+        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        ecUnderstand.setCourseId(courseId);//后面用session获取
         ecUnderstand.setUndTime(new Date());//设置创建时间
 
         ecUnderstandService.saveEcUnderstand(ecUnderstand);
@@ -138,14 +139,14 @@ public class EcUnderstandController {
 
         //获取学生用户的userId，后面用session获取
         //ecUnderstandSelect.setUserId(ecUser.getUserId());
-        int userid=999;
-        ecUnderstandSelect.setUserId(userid);
+        int userId=Integer.parseInt((String)request.getSession().getAttribute("current_EcUserId"));
+        ecUnderstandSelect.setUserId(userId);
 
         //判断understandselect表中是否已经存在该键值
         List<EcUnderstandSelect> ecUnderstandSelects=new ArrayList<EcUnderstandSelect>();
         ecUnderstandSelects=ecUnderstandSelectService.findEcUnderstandSelect(findMap1);
         for(int i=0;i<ecUnderstandSelects.size();i++){
-            if(ecUnderstandSelects.get(i).getUndId()==undId&&ecUnderstandSelects.get(i).getUserId()==userid)
+            if(ecUnderstandSelects.get(i).getUndId()==undId&&ecUnderstandSelects.get(i).getUserId()==userId)
                 flag=1;
         }
 
