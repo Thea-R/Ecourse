@@ -76,6 +76,7 @@ public class EcCheckController {
             ecStcheck.setCheckType(0);
             ecStcheckService.saveEcStcheck(ecStcheck);
         }
+        resultMap.put("checkId", ecCheck.getCheckId());
         resultMap.put("checkVerify", ecCheck.getCheckVerify());
         resultMap.put("res", "yes");
         return resultMap;
