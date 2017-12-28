@@ -42,9 +42,7 @@ public class EcStuandcourseController {
     @RequestMapping("/findMyCourse")
     public Map<String, Object> ecCourseFindCourse(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        System.out.println(request.getSession().getId());
-        //int userId = Integer.parseInt(request.getSession().getAttribute("current_EcUserId").toString());
-        int userId = 227;
+        int userId = Integer.parseInt(request.getParameter("userId"));
         List<EcStuandcourse> ecStuandcourses = ecStuandcourseService.findEcStuandcourseByUserId(userId);
         List<EcCourse> ecCourses = new ArrayList<EcCourse>();
         for (EcStuandcourse e : ecStuandcourses) {

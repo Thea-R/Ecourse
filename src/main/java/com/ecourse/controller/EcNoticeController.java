@@ -40,7 +40,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         EcNotice ecNotice = new EcNotice();
 
-        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
 
 
         ecNotice.setNotType(Integer.parseInt(request.getParameter("N_type")));
@@ -60,7 +60,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         Map<String, Object> findMap = new HashMap<String, Object>();
 
-        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
 
 
         List<EcNotice> ecNoticeList = new ArrayList<EcNotice>();
@@ -77,7 +77,7 @@ public class EcNoticeController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         Map<String, Object> findMap = new HashMap<String, Object>();
 
-        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
 
         List<EcNotice> ecNoticeList = new ArrayList<EcNotice>();
         findMap.put("courseId", courseId);
@@ -93,7 +93,7 @@ public class EcNoticeController {
         Map<String, Object> findMap = new HashMap<String, Object>();
 
         int notId=Integer.parseInt(request.getParameter("notId"));
-        int userId=Integer.parseInt((String)request.getSession().getAttribute("current_EcUserId"));
+        int userId=Integer.parseInt(request.getParameter("userId"));
 
 
         EcNotice ecNotice=new EcNotice();
@@ -124,7 +124,7 @@ public class EcNoticeController {
         Map<String, Object> findMap = new HashMap<String, Object>();
         Map<String, Object> findMap1= new HashMap<String, Object>();
 
-        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
         int notId=Integer.parseInt(request.getParameter("notId"));
 
         List<EcUser> ecUsersList=new ArrayList<EcUser>();//查看通知的学生

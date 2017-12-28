@@ -48,7 +48,7 @@ public class EcMessageController {
         List<EcStuandcourse> listStuandCourse =new ArrayList<EcStuandcourse>();
 
         listStuandCourse=ecStuandcourseService.findEcStuandcourseByUserId(Integer.parseInt(userId));
-
+        System.out.println("listcoursesize size:"+listStuandCourse.size());
         List<CourseMessage> listmessage=new ArrayList<CourseMessage>();
         for(EcStuandcourse item:listStuandCourse)
         {
@@ -59,7 +59,7 @@ public class EcMessageController {
             Map<String ,Object> msgmap=new HashMap<String, Object>();
             msgmap.put("userId",userId);
             msgmap.put("courseId",item.getCourseId());
-            //msgmap.put("msgAnonymous",0);
+            msgmap.put("msgAnonymous",0);
             EcMessage em=ecMessageService.findUserMessage(Integer.parseInt(userId),item.getCourseId());
             if(em!=null)
             cm.setMsgOk(em.getMsgOk());

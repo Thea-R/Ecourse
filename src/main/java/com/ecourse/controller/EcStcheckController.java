@@ -129,7 +129,7 @@ public class EcStcheckController {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
         String checkVerify = request.getParameter("checkVerify");
         int checkId = Integer.parseInt(request.getParameter("checkId"));
-        int userId = 223;
+        int userId = Integer.parseInt(request.getParameter("userId"));
         EcCheck ecCheck = ecCheckService.findEcCheckById(checkId);
         EcStcheck ecStcheck = ecStcheckService.findEcStcheckById(checkId, userId);
         if (ecStcheck == null || ecCheck == null || !ecCheck.getCheckVerify().equals(checkVerify)) {

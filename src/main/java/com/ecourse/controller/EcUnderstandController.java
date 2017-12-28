@@ -47,7 +47,7 @@ public class EcUnderstandController {
             ecUnderstand.setUndMaximum(Integer.parseInt(str));
         }
 
-        int courseId=Integer.parseInt((String) request.getSession().getAttribute("current_EcCourse"));
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
         ecUnderstand.setCourseId(courseId);//后面用session获取
         ecUnderstand.setUndTime(new Date());//设置创建时间
 
@@ -139,7 +139,7 @@ public class EcUnderstandController {
 
         //获取学生用户的userId，后面用session获取
         //ecUnderstandSelect.setUserId(ecUser.getUserId());
-        int userId=Integer.parseInt((String)request.getSession().getAttribute("current_EcUserId"));
+        int userId=Integer.parseInt(request.getParameter("userId"));
         ecUnderstandSelect.setUserId(userId);
 
         //判断understandselect表中是否已经存在该键值

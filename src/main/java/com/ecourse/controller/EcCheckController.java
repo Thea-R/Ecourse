@@ -46,8 +46,7 @@ public class EcCheckController {
     @RequestMapping("/newCheck")
     public Map<String, Object> ecCheckNew(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        //Integer.parseInt(request.getSession().getAttribute("current_EcCourse"))
-        int courseId = 1;
+        int courseId = Integer.parseInt(request.getParameter("courseId"));
         Map<String, Object> findMap = new HashMap<String, Object>(16);
         findMap.put("courseId", courseId);
         findMap.put("checkState", 1);
@@ -94,8 +93,7 @@ public class EcCheckController {
     @RequestMapping("/endCheck")
     public Map<String, Object> ecCheckEnd(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        //Integer.parseInt(request.getSession().getAttribute("current_EcCourse"))
-        int courseId = 1;
+        int courseId = Integer.parseInt(request.getParameter("courseId"));
         Map<String, Object> findMap = new HashMap<String, Object>(16);
         findMap.put("courseId", courseId);
         findMap.put("checkState", 1);
@@ -123,8 +121,7 @@ public class EcCheckController {
     @RequestMapping("/findCourseCheck")
     public Map<String, Object> ecCheckFindCourseCheck(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        //Integer.parseInt(request.getSession().getAttribute("current_EcCourse"))
-        int courseId = 1;
+        int courseId = Integer.parseInt(request.getParameter("courseId"));
         List<EcCheck> ecChecks = ecCheckService.findEcCheckByCourseId(courseId);
         if (ecChecks.size() == 0) {
             resultMap.put("res", "no");
@@ -161,8 +158,7 @@ public class EcCheckController {
     @RequestMapping("/findTheCourseisCheck")
     public Map<String, Object> ecStccheckNewStcCheck(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
-        //Integer.parseInt(request.getSession().getAttribute("current_EcCourse"))
-        int courseId = 1;
+        int courseId = Integer.parseInt(request.getParameter("courseId"));
         Map<String, Object> findMap = new HashMap<String, Object>(16);
         findMap.put("courseId", courseId);
         findMap.put("checkState", 1);

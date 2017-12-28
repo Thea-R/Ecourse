@@ -44,6 +44,8 @@ public class EcQuestionController {
     @RequestMapping("/questionList")
     public Map<String, Object> QuestionList(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        userId = Integer.parseInt(request.getParameter("userId"));
+        courseId = Integer.parseInt(request.getParameter("courseId"));
         EcUser ecUser=ecUserService.findEcUserById(userId);
         resultMap.put("name",ecUser.getUserName());
         Map<String,Object> map1=new HashMap<String,Object>();
@@ -73,6 +75,7 @@ public class EcQuestionController {
     @RequestMapping("/addQuestion")
     public Map<String, Object> AddQuestion(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        courseId = Integer.parseInt(request.getParameter("courseId"));
         String stype = request.getParameter("type");
         int type=Integer.parseInt(stype);
         String sanswer = request.getParameter("answer");
@@ -131,6 +134,7 @@ public class EcQuestionController {
     public Map<String, Object> IfQuestion(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
         Map<String,Object> map1=new HashMap<String,Object>();
+        courseId = Integer.parseInt(request.getParameter("courseId"));
         map1.put("courseId",courseId);
         List<EcQuestion> list1=new ArrayList<EcQuestion>();
         int id=0;
@@ -161,6 +165,7 @@ public class EcQuestionController {
     @RequestMapping("/answerQuestion")
     public Map<String, Object> AnswerQuestion(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        userId = Integer.parseInt(request.getParameter("userId"));
         String squeid = request.getParameter("queid");
         int queid=Integer.parseInt(squeid);
         String sanswer=request.getParameter("answer");

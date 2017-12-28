@@ -38,6 +38,8 @@ public class EcSourceController {
     public Map<String, Object> displayCourseware(ModelMap map, HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
         Map<String, Object> tmp = new HashMap<String, Object>(16);
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
+        tmp.put("courseId",courseId);
         List<EcSource> list=ecSourceService.findEcSource(tmp);//ecSourceService.findEcSourceByCid(Integer.parseInt(request.getSession().getAttribute("current_EcCourse").toString()));
 
         if(list==null || list.isEmpty()) {
@@ -62,6 +64,7 @@ public class EcSourceController {
     @RequestMapping("/release")
     public Map<String, Object> releaseCourseware(ModelMap map, HttpServletRequest request) throws Exception{
         Map<String, Object> resultMap = new HashMap<String, Object>(16);
+        int courseId=Integer.parseInt(request.getParameter("courseId"));
         EcSource ecSource = new EcSource();
         String title=request.getParameter("sTitle");
         String link=request.getParameter("sLink");
@@ -76,6 +79,7 @@ public class EcSourceController {
         ecSource.setSourceLink(link);
         ecSource.setSourcePassword(pw);
         ecSource.setSourceNote(note);
+        ecSource.setCourseId(courseId);
 
         ecSourceService.saveEcSource(ecSource);
         resultMap.put("res", "yes");
