@@ -53,6 +53,7 @@ public class EcCheckController {
         List<EcCheck> ecChecks = ecCheckService.findEcCheck(findMap);
         if (ecChecks.size() > 0) {
             resultMap.put("checkVerify", ecChecks.get(0).getCheckVerify());
+            resultMap.put("checkId", ecChecks.get(0).getCheckId());
             resultMap.put("res", "no");
             return resultMap;
         }
