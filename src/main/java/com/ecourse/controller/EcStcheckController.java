@@ -80,6 +80,7 @@ public class EcStcheckController {
         StuCheckResult stuCheckResult = new StuCheckResult();
         EcUser ecUser;
         for (EcStcheck e : ecStchecks) {
+            stuCheckResult = new StuCheckResult();
             stuCheckResult.setEcStcheck(e);
             ecUser = ecUserService.findEcUserById(e.getUserId());
             stuCheckResult.setUserName(ecUser.getUserName());
