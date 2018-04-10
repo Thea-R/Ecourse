@@ -1,0 +1,67 @@
+/* pages/teaCW/teaCW.wxss */
+.userinfo {
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #33acc9;
+  margin-top: 100rpx;
+  margin-left: 5%;
+}
+
+.add {
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 10rpx;
+  margin-left: 50%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.leftMargin {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.listTitle {
+  color: white;
+  background-color: #33acc9;
+  font-size: 40rpx;
+  height: 60rpx;
+  vertical-align: center;
+  margin-top: 2%;
+}
+
+.cw {
+  display: flex;
+  margin-top: 2%;
+  flex-direction: column;
+}
+
+.cwTitle {
+  color: #33acc9;
+  font-size: 38rpx;
+}
+
+.cwDetails {
+  font-size: 35rpx;
+}
+
+.line {
+  height: 5rpx;
+  width: 100%;
+  margin-top: 2%;
+}

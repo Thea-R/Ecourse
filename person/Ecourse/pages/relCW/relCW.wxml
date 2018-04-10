@@ -1,0 +1,36 @@
+<!--pages/relCW/relCW.wxml-->
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+
+<view class="listTitle">
+  <text class="leftMargin">课件发布</text>
+</view>
+
+<view class="fillin">
+  <form bindsubmit="formSubmit">
+    <text>\n</text>
+    <view class="row">
+      <text>资料名称*</text>
+    </view>
+    <input class="inputBox" type="text" name="sTitle"></input>
+
+    <view class="row">
+      <text>资料链接*</text>
+    </view>
+    <input class="inputBox" type="text" name="sLink"></input>
+
+    <view class="row">
+      <text>密码</text>
+    </view>
+    <input class="inputBox" type="text" name="sPassword"></input>
+
+    <view class="row">
+      <text>备注</text>
+    </view>
+    <input class="inputBox" type="text" name="sNote"></input>
+
+    <button class="but" formType="submit">确定</button>
+  </form>
+</view>

@@ -1,0 +1,67 @@
+package com.ecourse.service.impl;
+
+import com.ecourse.dao.EcAnswerDao;
+import com.ecourse.entity.EcAnswer;
+import com.ecourse.service.EcAnswerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author tomato
+ * @create 2017-12-14 上午9:39
+ */
+@Service("EcAnswer")
+public class EcAnswerServiceImpl implements EcAnswerService {
+
+    @Autowired
+    private EcAnswerDao ecAnswerDao;
+
+    @Override
+    public void saveEcAnswer(EcAnswer ecAnswer) {
+        ecAnswerDao.saveEcAnswer(ecAnswer);
+    }
+
+    @Override
+    public EcAnswer findEcAnswerById(Integer id) {
+        return ecAnswerDao.findEcAnswerById(id);
+    }
+
+    @Override
+    public List<EcAnswer> findEcAnswer(Map<String, Object> map) {
+        StringBuilder hql = new StringBuilder("from EcAnswer where 1=1 ");
+        List<Object> params = new LinkedList<Object>();
+
+        if (map.get("ansId") != null) {
+            hql.append(" and ansId=? ");
+            params.add(map.get("ansId"));
+        }
+        if (map.get("userId") != null) {
+            hql.append(" and userId=? ");
+            params.add(map.get("userId"));
+        }
+        if (map.get("queId") != null) {
+            hql.append(" and queId=? ");
+            params.add(map.get("queId"));
+        }
+        if (map.get("ansAnswer") != null) {
+            hql.append(" and ansAnswer=? ");
+            params.add(map.get("ansAnswer"));
+        }
+        //System.out.println(hql.toString());
+        return ecAnswerDao.findEcAnswer(params, hql.toString());
+    }
+
+    @Override
+    public void updateEcAnswer(EcAnswer ecAnswer) {
+        ecAnswerDao.updateEcAnswer(ecAnswer);
+    }
+
+    @Override
+    public void deletEcAnswer(EcAnswer ecAnswer) {
+        ecAnswerDao.deletEcAnswer(ecAnswer);
+    }
+}

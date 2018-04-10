@@ -1,0 +1,58 @@
+/* pages/relCW/relCW.wxss */
+.userinfo {
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #33acc9;
+  margin-top: 100rpx;
+  margin-left: 5%;
+}
+
+.fillin {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftMargin {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.listTitle {
+  color: white;
+  background-color: #33acc9;
+  font-size: 40rpx;
+  height: 60rpx;
+  vertical-align: center;
+  margin-top: 2%;
+}
+
+.inputBox {
+  border: 1rpx solid grey;
+  border-radius: 20rpx;
+  margin-top: 2%;
+}
+
+.row {
+  font-size: 35rpx;
+  margin-top: 2%;
+}
+
+.but {
+  color: white;
+  margin-top: 5%;
+  background-color: #33acc9;
+  border-radius: 20rpx;
+}

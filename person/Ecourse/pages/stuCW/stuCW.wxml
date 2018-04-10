@@ -1,0 +1,29 @@
+<!--pages/stuCW/stuCW.wxml-->
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+
+<view class="list">
+  <view class="listTitle">
+    <text class="leftMargin">资料列表</text>
+  </view>
+  <view wx:if="{{!num}}">
+    no list..
+  </view>
+  <view wx:else>
+    <view wx:for="{{cwlist}}" class="cw">
+      <view class="leftMargin">
+        <view class="cwTitle">
+          {{item.sourceTitle}}
+        </view>
+        <view class="cwDetails">
+          <view>链接：{{item.sourceLink}}</view>
+          <view wx:if="{{item.sourcePassword}}">密码：{{item.sourcePassword}}</view>
+          <view wx:if="{{!item.sourceNote}}">备注：{{ite.sourceNote}}</view>
+        </view>
+      </view>
+      <image class="line" src="line.png"></image>
+    </view>
+  </view>
+</view>

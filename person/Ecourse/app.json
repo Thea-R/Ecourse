@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/teaCW/teaCW",
+    "pages/stuCW/stuCW",
+    "pages/relCW/relCW"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#33acc9",
+    "navigationBarTitleText": "易课",
+    "navigationBarTextStyle": "white"
+  }
+}
